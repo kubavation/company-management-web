@@ -1,17 +1,26 @@
-<table mat-table class="mat-elevation-z8" [dataSource]="organisationsDataSource">
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="organisationsDataSource">
 
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="level">
-    <th mat-header-cell *matHeaderCellDef> level </th>
-    <td mat-cell *matCellDef="let element"> {{element.level}} </td>
-  </ng-container>
+    <ng-container matColumnDef="level">
+      <th mat-header-cell *matHeaderCellDef> level </th>
+      <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+    </ng-container>
 
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-</table>
+    <tr
+      mat-row
+      (click)="onRowSelected(row)"
+      [class.demo-row-is-clicked]="selectedRow === row"
+      *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

@@ -9,9 +9,10 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { OrganisationDetailsComponent } from './administration/organisation/components/organisation-details/organisation-details.component';
 
 @NgModule({
-  declarations: [AdministrationComponent, OrganisationComponent, OrganisationTableComponent],
+  declarations: [AdministrationComponent, OrganisationComponent, OrganisationTableComponent, OrganisationDetailsComponent],
   imports: [
     CommonModule,
     AdministrationRoutingModule,
