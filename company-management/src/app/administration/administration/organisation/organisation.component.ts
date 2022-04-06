@@ -12,12 +12,18 @@ import {tap} from "rxjs/operators";
 export class OrganisationComponent implements OnInit {
 
   organisations$: Observable<Organisation[]>
+  organisation: Organisation;
   private DEFAULT_LEVEL = 1;
 
   constructor(private organisationService: OrganisationService) { }
 
   ngOnInit() {
     this.organisations$ = this.organisationService.getOrganisationsByLevel(this.DEFAULT_LEVEL);
+  }
+
+  setSelection(organisation) {
+    console.log(organisation)
+    this.organisation = organisation;
   }
 
 }

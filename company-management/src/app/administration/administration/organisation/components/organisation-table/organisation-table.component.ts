@@ -17,7 +17,7 @@ export class OrganisationTableComponent {
   }
 
   @Output()
-  public onSelected: EventEmitter<Organisation>;
+  public selectedEvent = new EventEmitter<Organisation>();
 
   selectedRow: Organisation;
 
@@ -31,7 +31,7 @@ export class OrganisationTableComponent {
 
   onRowSelected(row) {
     this.selectedRow = row;
-    this.onSelected.next(row);
+    this.selectedEvent.next(row);
   }
 
 }

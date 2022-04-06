@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Organisation} from "../../model/Organisation";
 
 @Component({
   selector: 'app-organisation-details',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganisationDetailsComponent implements OnInit {
 
+  @Input()
+  public organisation: Organisation;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('init')
   }
 
 }

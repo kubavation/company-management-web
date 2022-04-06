@@ -1,3 +1,7 @@
 
 
-<app-organisation-table [organisations]="organisations$ | async"></app-organisation-table>
+<app-organisation-table
+  [organisations]="organisations$ | async"
+  (selectedEvent)="setSelection($event)"
+></app-organisation-table>
+<app-organisation-details [organisation]="organisation"></app-organisation-details>
