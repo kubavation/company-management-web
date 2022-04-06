@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {OrganisationService} from "./service/organisation.service";
+import {Observable} from "rxjs";
+import {Organisation} from "./model/Organisation";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-organisation',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrganisationComponent implements OnInit {
 
-  constructor() { }
+  organisations$: Observable<Organisation[]>
+  private DEFAULT_LEVEL = 1;
+
+  constructor(private organisationService: OrganisationService) { }
 
   ngOnInit() {
+    this.organisations$ = this.organisationService.getOrganisationsByLevel(this.DEFAULT_LEVEL);
   }
 
 }
