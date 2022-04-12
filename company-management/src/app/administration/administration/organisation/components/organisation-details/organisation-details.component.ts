@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Organisation} from "../../model/Organisation";
 
 @Component({
@@ -11,10 +11,17 @@ export class OrganisationDetailsComponent implements OnInit {
   @Input()
   public organisation: Organisation;
 
+  @Output()
+  public fetchChildren = new EventEmitter<Organisation>();
+
   constructor() { }
 
   ngOnInit() {
     console.log('init')
+  }
+
+  public onFetchChildren(parent) {
+    this.fetchChildren.next(parent);
   }
 
 }

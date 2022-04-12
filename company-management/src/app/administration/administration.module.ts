@@ -10,6 +10,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { OrganisationDetailsComponent } from './administration/organisation/components/organisation-details/organisation-details.component';
+import {MatTreeModule} from "@angular/material/tree";
+import {MatIconModule} from "@angular/material/icon";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [AdministrationComponent, OrganisationComponent, OrganisationTableComponent, OrganisationDetailsComponent],
@@ -20,7 +24,11 @@ import { OrganisationDetailsComponent } from './administration/organisation/comp
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTreeModule,
+    MatIconModule,
+    MatProgressBarModule,
+    MatButtonModule
   ]
 })
 export class AdministrationModule { }
