@@ -11,7 +11,22 @@ export class OrganisationService {
 
   constructor(private http: HttpClient) { }
 
+  public getOrganisations(): Observable<Organisation[]> {
+    return this.http.get<Organisation[]>(`${Env.serverUrl}/organisations`);
+  }
+
   public getOrganisationsByLevel(level: number): Observable<Organisation[]> {
     return this.http.get<Organisation[]>(`${Env.serverUrl}/organisations/level/${level}`);
+  }
+
+  public getOrganisationsByParentAndLevel(level: number): Observable<Organisation[]> {
+    return this.http.get<Organisation[]>(`${Env.serverUrl}/organisations/level/${level}`);
+  }
+
+
+  public getOrganisationsByParentId(parentId?): Observable<Organisation[]> {
+
+    const pp = parentId ?? '';
+    return this.http.get<Organisation[]>(`${Env.serverUrl}/organisations/parent/${pp}`);
   }
 }

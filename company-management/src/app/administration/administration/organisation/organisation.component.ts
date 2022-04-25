@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {OrganisationService} from "./service/organisation.service";
-import {Observable} from "rxjs";
+import {BehaviorSubject, combineLatest, Observable} from "rxjs";
 import {Organisation} from "./model/Organisation";
-import {tap} from "rxjs/operators";
+import {map, switchMap, tap, withLatestFrom} from "rxjs/operators";
 
 @Component({
   selector: 'app-organisation',
@@ -15,15 +15,20 @@ export class OrganisationComponent implements OnInit {
   organisation: Organisation;
   private DEFAULT_LEVEL = 1;
 
+  private parentIdSubject = new BehaviorSubject({parentId: null, level: this.DEFAULT_LEVEL});
+
   constructor(private organisationService: OrganisationService) { }
 
   ngOnInit() {
-    this.organisations$ = this.organisationService.getOrganisationsByLevel(this.DEFAULT_LEVEL);
+    this.organisations$ = this.organisationService.getOrganisationsByParentId(null)
+      .pipe(tap(c => console.log(c)));
   }
 
   setSelection(organisation) {
+    this.organisation = organisation
     console.log(organisation)
-    this.organisation = organisation;
+
   }
+
 
 }

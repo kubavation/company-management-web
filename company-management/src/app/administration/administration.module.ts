@@ -14,6 +14,7 @@ import {MatTreeModule} from "@angular/material/tree";
 import {MatIconModule} from "@angular/material/icon";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatButtonModule} from "@angular/material/button";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [AdministrationComponent, OrganisationComponent, OrganisationTableComponent, OrganisationDetailsComponent],
@@ -28,7 +29,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatTreeModule,
     MatIconModule,
     MatProgressBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    MatGridListModule
   ]
 })
 export class AdministrationModule { }

@@ -1,7 +1,8 @@
 
-
-<app-organisation-table
+<div class="organisation-container">
+<app-organisation-table class="item"
   [organisations]="organisations$ | async"
   (selectedEvent)="setSelection($event)"
 ></app-organisation-table>
-<app-organisation-details [organisation]="organisation"></app-organisation-details>
+<app-organisation-details class="item" [organisation]="organisation"></app-organisation-details>
+</div>
