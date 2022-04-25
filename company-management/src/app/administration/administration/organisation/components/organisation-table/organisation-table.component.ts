@@ -10,19 +10,19 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class OrganisationTableComponent {
 
-  public dataSource;
+  organisationsData;
   displayedColumns: string[] = ['name', 'level', 'id'];
-  private _organisationsData;
 
   constructor() {
   }
 
+  @Input()
+  organisationPath: Organisation[];
 
   @Input()
   set organisations(organisations: Organisation[]) {
-    console.log(organisations)
-    this._organisationsData = organisations;
-    this.dataSource = organisations;
+    this.selectedRow = null;
+    this.organisationsData = organisations;
   }
 
   @Output()
@@ -35,19 +35,19 @@ export class OrganisationTableComponent {
 
   onRowSelected(row) {
     this.selectedRow = row;
-    this.selectedEvent.next(row);
   }
 
   getChildren() {
-    console.log(this.selectedRow.id)
-    console.log(this._organisationsData)
-    this.dataSource = this.selectedRow.children;
+    this.selectedEvent.next(this.selectedRow);
   }
 
   goToParent() {
-    //this.dataSource = this._organisationsData.
+    this.selectedEvent.next(null);
   }
 
 
+  getOrganisationPathStr() {
+    return this.organisationPath.map(o => o.name).join("/");
+  }
 
 }

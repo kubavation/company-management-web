@@ -2,6 +2,7 @@
 <div class="organisation-container">
 <app-organisation-table class="item"
   [organisations]="organisations$ | async"
+  [organisationPath]="selectedOrganisationPath"
   (selectedEvent)="setSelection($event)"
 ></app-organisation-table>
 <app-organisation-details class="item" [organisation]="organisation"></app-organisation-details>

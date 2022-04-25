@@ -24,9 +24,8 @@ export class OrganisationService {
   }
 
 
-  public getOrganisationsByParentId(parentId?): Observable<Organisation[]> {
-
-    const pp = parentId ?? '';
-    return this.http.get<Organisation[]>(`${Env.serverUrl}/organisations/parent/${pp}`);
+  public getOrganisationsByParentId(parentId?: number): Observable<Organisation[]> {
+    const parentParam = parentId ?? '';
+    return this.http.get<Organisation[]>(`${Env.serverUrl}/organisations/parent/${parentParam}`);
   }
 }

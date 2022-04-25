@@ -9,24 +9,28 @@ import {map, switchMap, tap, withLatestFrom} from "rxjs/operators";
   templateUrl: './organisation.component.html',
   styleUrls: ['./organisation.component.scss']
 })
-export class OrganisationComponent implements OnInit {
+export class OrganisationComponent {
 
-  organisations$: Observable<Organisation[]>
   organisation: Organisation;
-  private DEFAULT_LEVEL = 1;
+  private selectedParentBS = new BehaviorSubject<number | null>(null);
 
-  private parentIdSubject = new BehaviorSubject({parentId: null, level: this.DEFAULT_LEVEL});
+  selectedOrganisationPath: Organisation[] = [];
+
+  organisations$ = this.selectedParentBS
+    .pipe(
+      switchMap(parentId => this.organisationService.getOrganisationsByParentId(parentId))
+    );
 
   constructor(private organisationService: OrganisationService) { }
 
-  ngOnInit() {
-    this.organisations$ = this.organisationService.getOrganisationsByParentId(null)
-      .pipe(tap(c => console.log(c)));
-  }
 
   setSelection(organisation) {
-    this.organisation = organisation
-    console.log(organisation)
+    if (organisation == null) {
+      this.selectedParentBS.next(this.selectedOrganisationPath.pop().parentId);
+    } else {
+      this.selectedParentBS.next(organisation.id)
+      this.selectedOrganisationPath.push(organisation)
+    }
 
   }
 
