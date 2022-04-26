@@ -3,7 +3,9 @@
 <app-organisation-table class="item"
   [organisations]="organisations$ | async"
   [organisationPath]="selectedOrganisationPath"
+  [selectedOrganisation]="organisation"
   (selectedEvent)="setSelection($event)"
+  (fetchChildrenEvent)="fetchOrganisations()"
 ></app-organisation-table>
 <app-organisation-details class="item" [organisation]="organisation"></app-organisation-details>
 </div>

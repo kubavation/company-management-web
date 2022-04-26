@@ -11,7 +11,7 @@ import {map, switchMap, tap, withLatestFrom} from "rxjs/operators";
 })
 export class OrganisationComponent {
 
-  organisation: Organisation;
+  organisation: Organisation | null;
   private selectedParentBS = new BehaviorSubject<number | null>(null);
 
   selectedOrganisationPath: Organisation[] = [];
@@ -25,14 +25,23 @@ export class OrganisationComponent {
 
 
   setSelection(organisation) {
-    if (organisation == null) {
-      this.selectedParentBS.next(this.selectedOrganisationPath.pop().parentId);
-    } else {
-      this.selectedParentBS.next(organisation.id)
-      this.selectedOrganisationPath.push(organisation)
+    this.organisation = organisation;
+    if(this.selectedOrganisationPath.find(o => o.level === this.organisation.level) != null) {
+      this.selectedOrganisationPath.pop();
     }
+    this.selectedOrganisationPath.push(this.organisation)
 
   }
 
+  fetchOrganisations() {
+    console.log('in fetch')
+    console.log(this.organisation)
+    if (this.organisation == null) {
+      this.selectedParentBS.next(this.selectedOrganisationPath.pop().parentId);
+    } else {
+      this.selectedParentBS.next(this.organisation.id)
+    }
+    this.organisation = null;
+  }
 
 }

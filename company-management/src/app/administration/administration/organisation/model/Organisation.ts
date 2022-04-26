@@ -3,5 +3,9 @@ export interface Organisation {
   name: string;
   level: number;
   parentId: number;
+  shortcut: string;
+  description: number;
+  dateFrom: Date;
+  dateTo: Date;
   children: Organisation[];
 }

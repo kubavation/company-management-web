@@ -1,38 +1,55 @@
 <p>path: {{getOrganisationPathStr()}}</p>
 <div class="demo-button-container" style="display: flex; background-color: dimgrey">
-  <button mat-raised-button class="demo-button" color="primary" (click)="goToParent()"
+  <button mat-raised-button class="demo-button" color="primary" (click)="fetchOrganisations()"
           [disabled]="organisationPath.length === 0">
     Previous
   </button>
-  <button mat-raised-button class="demo-button" color="primary" (click)="getChildren()" [disabled]="!selectedRow">
+  <button mat-raised-button class="demo-button" color="primary" (click)="fetchOrganisations()" [disabled]="!selectedOrganisation">
     Get children
   </button>
 </div>
 
-<table mat-table [dataSource]="organisationsData" class="mat-elevation-z8">
+<table mat-table [dataSource]="organisations" class="mat-elevation-z8">
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="level">
-    <th mat-header-cell *matHeaderCellDef> Level </th>
-    <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+  <ng-container matColumnDef="shortcut">
+    <th mat-header-cell *matHeaderCellDef> Shortcut </th>
+    <td mat-cell *matCellDef="let element"> {{element.shortcut}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="dateFrom">
+    <th mat-header-cell *matHeaderCellDef> Date from </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateFrom | date: 'yyyy-MM-dd'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateTo">
+    <th mat-header-cell *matHeaderCellDef> Date to </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateTo | date: 'yyyy-MM-dd'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="disclaimer" >
+    <td mat-footer-cell *matFooterCellDef colspan="2">
+      <p *ngIf="organisations?.length === 0">No data to display</p>
+    </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr
     mat-row
     (click)="onRowSelected(row)"
-    [class.demo-row-is-clicked]="row == selectedRow"
+    [class.demo-row-is-clicked]="row == selectedOrganisation"
     *matRowDef="let row; columns: displayedColumns;"
   ></tr>
+
+  <tr mat-footer-row  *matFooterRowDef="['disclaimer']" class="example-second-footer-row"></tr>
 
 </table>

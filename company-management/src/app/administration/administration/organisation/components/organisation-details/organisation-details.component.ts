@@ -9,7 +9,7 @@ import {Organisation} from "../../model/Organisation";
 export class OrganisationDetailsComponent implements OnInit {
 
   @Input()
-  public organisation: Organisation;
+  public organisation;
 
   @Output()
   public fetchChildren = new EventEmitter<Organisation>();

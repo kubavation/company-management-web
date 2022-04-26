@@ -10,41 +10,31 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class OrganisationTableComponent {
 
-  organisationsData;
-  displayedColumns: string[] = ['name', 'level', 'id'];
-
-  constructor() {
-  }
+  displayedColumns: string[] = ['name', 'shortcut', 'description', 'dateFrom', 'dateTo'];
 
   @Input()
   organisationPath: Organisation[];
 
   @Input()
-  set organisations(organisations: Organisation[]) {
-    this.selectedRow = null;
-    this.organisationsData = organisations;
-  }
+  selectedOrganisation: Organisation;
+
+  @Input()
+  organisations: Organisation[];
 
   @Output()
   public selectedEvent = new EventEmitter<Organisation>();
 
-  selectedRow: Organisation;
-
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @Output()
+  public fetchChildrenEvent = new EventEmitter<Organisation>();
 
 
   onRowSelected(row) {
-    this.selectedRow = row;
+    this.selectedEvent.next(row);
   }
 
-  getChildren() {
-    this.selectedEvent.next(this.selectedRow);
+  fetchOrganisations() {
+    this.fetchChildrenEvent.next();
   }
-
-  goToParent() {
-    this.selectedEvent.next(null);
-  }
-
 
   getOrganisationPathStr() {
     return this.organisationPath.map(o => o.name).join("/");
