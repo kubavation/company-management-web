@@ -12,6 +12,9 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatGridListModule} from '@angular/material/grid-list';
+import {LayoutModule} from "./layout/layout.module";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    MatGridListModule
+    MatGridListModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [OrganisationService],
   bootstrap: [AppComponent]

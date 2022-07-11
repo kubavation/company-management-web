@@ -11,17 +11,11 @@ export class OrganisationDetailsComponent implements OnInit {
   @Input()
   public organisation;
 
-  @Output()
-  public fetchChildren = new EventEmitter<Organisation>();
-
   constructor() { }
 
   ngOnInit() {
     console.log('init')
   }
 
-  public onFetchChildren(parent) {
-    this.fetchChildren.next(parent);
-  }
 
 }
