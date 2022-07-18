@@ -15,10 +15,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {LayoutModule} from "./layout/layout.module";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import { BaseModalComponent } from './shared/base-modal/base-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BaseModalComponent
   ],
   imports: [
     BrowserModule,
