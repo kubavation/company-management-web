@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {ConfirmationModalComponent} from "./shared/confirmation-modal/confirmation-modal.component";
+import {
+  ConfirmationModalProvider
+} from "./shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'company-management';
+
+  constructor(private cc: ConfirmationModalProvider) {
+
+  }
+
+  open() {
+    this.cc.open()
+      .subscribe(res => console.log(res))
+  }
+
 }

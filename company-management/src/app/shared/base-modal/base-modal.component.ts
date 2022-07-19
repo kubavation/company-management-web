@@ -8,9 +8,9 @@ import {FormBuilder} from "@angular/forms";
   templateUrl: './base-modal.component.html',
   styleUrls: ['./base-modal.component.scss']
 })
-export abstract class BaseModalComponent<T, R> implements OnInit {
+export class BaseModalComponent implements OnInit {
 
-  protected constructor(private dialog: MatDialog,
+  public constructor(private dialog: MatDialog,
                         private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -20,9 +20,10 @@ export abstract class BaseModalComponent<T, R> implements OnInit {
     this.dialog.open(null);
   }
 
-  public onSave(): Observable<R> {
+  public onSave(){
     return null;
   }
+
 
 
 }

@@ -16,11 +16,16 @@ import {LayoutModule} from "./layout/layout.module";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import { BaseModalComponent } from './shared/base-modal/base-modal.component';
+import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import { ConfirmationModalProvider } from './shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaseModalComponent
+    BaseModalComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,14 @@ import { BaseModalComponent } from './shared/base-modal/base-modal.component';
     MatGridListModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    MatButtonModule
   ],
-  providers: [OrganisationService],
+  entryComponents: [
+    ConfirmationModalComponent
+  ],
+  providers: [OrganisationService, ConfirmationModalProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
