@@ -1,0 +1,10 @@
+//.dialog-content {
+//  width: 90%;
+//  height: 90%;
+//}
+//
+::ng-deep {
+  .mat-dialog-content {
+    height: 100px;
+  }
+}

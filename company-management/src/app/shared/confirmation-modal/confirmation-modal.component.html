@@ -1,8 +1,10 @@
-<h1 mat-dialog-title>Delete file</h1>
-<div mat-dialog-content>
+<div class="container">
+  <h1 mat-dialog-title>Confirm</h1>
+  <div mat-dialog-content>
   {{confirmationMsg}}
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button (click)="onAccept()">Ok</button>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button (click)="onAccept()">Ok</button>
+  </mat-dialog-actions>
 </div>
