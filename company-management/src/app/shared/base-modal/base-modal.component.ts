@@ -8,7 +8,7 @@ import {FormBuilder} from "@angular/forms";
   templateUrl: './base-modal.component.html',
   styleUrls: ['./base-modal.component.scss']
 })
-export class BaseModalComponent implements OnInit {
+export class BaseModalComponent {
 
   public constructor(private dialog: MatDialog,
                         private fb: FormBuilder) { }
