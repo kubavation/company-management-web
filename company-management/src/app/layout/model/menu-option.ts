@@ -1,4 +1,4 @@
 export interface MenuOption {
-  name: string;
-  url: string;
+  description: string;
+  value: string;
 }

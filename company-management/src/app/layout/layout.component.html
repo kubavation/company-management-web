@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav opened>
     <mat-nav-list *ngFor="let menuOption of (menuOptions$ | async)">
-        <a mat-list-item [routerLink]="menuOption.url">{{menuOption.name}}</a>
+        <a mat-list-item [routerLink]="menuOption.value">{{menuOption.description}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

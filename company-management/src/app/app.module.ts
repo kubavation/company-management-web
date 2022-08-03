@@ -20,12 +20,14 @@ import { ConfirmationModalComponent } from './shared/confirmation-modal/confirma
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { ConfirmationModalProvider } from './shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service';
+import { AbstractBaseModalComponent } from './shared/abstract-base-modal/abstract-base-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseModalComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    AbstractBaseModalComponent
   ],
   imports: [
     BrowserModule,
