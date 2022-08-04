@@ -13,7 +13,7 @@ export class LayoutService {
   constructor(private http: HttpClient) { }
 
   public getMenuOptions(): Observable<MenuOption[]> {
-    return this.http.get<MenuOption[]>(`${Env.serverUrl}/configuration/group/MENU_OPTION`)
+    return this.http.get<MenuOption[]>(`${Env.serverUrl}/menu-config`)
       .pipe(
         tap((_) => console.log(_))
       );

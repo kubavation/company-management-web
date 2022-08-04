@@ -12,5 +12,5 @@ export class LayoutComponent {
   menuOptions$ = this.layoutService.getMenuOptions();
 
   constructor(private layoutService: LayoutService) { }
-  
+
 }
