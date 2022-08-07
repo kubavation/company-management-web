@@ -9,8 +9,19 @@ import {MenuOption} from "../model/menu-option";
 export class NavItemComponent {
 
   @Input()
-  private option: MenuOption;
+  option: MenuOption;
+
+  expanded: boolean;
 
   constructor() { }
+
+  public onOptionSelected(option: MenuOption): void {
+    if(option.children && option.children.length) {
+      this.expanded = !this.expanded;
+    } else {
+      //todo routing
+    }
+
+  }
 
 }

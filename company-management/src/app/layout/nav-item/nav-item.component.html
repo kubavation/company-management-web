@@ -1,1 +1,15 @@
-<p>nav-item works!</p>
+<a mat-list-item  (click)="onOptionSelected(option)"
+   class="menu-list-item">
+  <mat-icon class="routeIcon"></mat-icon>
+  {{option.name}}
+  <span fxFlex *ngIf="option.children && option.children.length">
+    <span fxFlex></span>
+    <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+      expand_more
+    </mat-icon>
+  </span>
+</a>
+<div *ngIf="expanded">
+  <app-nav-item *ngFor="let child of option.children" [option]="child" >
+  </app-nav-item>
+</div>
