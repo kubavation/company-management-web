@@ -11,12 +11,14 @@ import {AppRoutingModule} from "../app-routing.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { NavItemComponent } from './nav-item/nav-item.component';
 
 
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    NavItemComponent
   ],
   exports: [
     LayoutComponent
