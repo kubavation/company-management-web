@@ -1,7 +1,7 @@
 <a mat-list-item (click)="onOptionSelected(option)"
    class="menu-list-item nav-item">
   <mat-icon class="nav-item-icon" *ngIf="!!option.icon">{{option.icon}}</mat-icon>
-  {{option.name}}
+  <span class="option-level-{{level}}">{{option.name}}</span>
   <span *ngIf="option.children && option.children.length">
     <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
       expand_more
@@ -9,6 +9,6 @@
   </span>
 </a>
 <div *ngIf="expanded">
-  <app-nav-item *ngFor="let child of option.children" [option]="child" >
+  <app-nav-item *ngFor="let child of option.children" [option]="child" [level]="level + 1">
   </app-nav-item>
 </div>

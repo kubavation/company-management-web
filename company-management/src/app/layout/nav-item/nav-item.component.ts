@@ -12,6 +12,9 @@ export class NavItemComponent {
   @Input()
   option: MenuOption;
 
+  @Input()
+  level: number = 1;
+
   expanded: boolean;
 
   constructor(private router: Router) { }
