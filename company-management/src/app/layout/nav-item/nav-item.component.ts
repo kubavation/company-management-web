@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuOption} from "../model/menu-option";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav-item',
@@ -13,13 +14,13 @@ export class NavItemComponent {
 
   expanded: boolean;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   public onOptionSelected(option: MenuOption): void {
     if(option.children && option.children.length) {
       this.expanded = !this.expanded;
     } else {
-      //todo routing
+      this.router.navigate([option.url])
     }
 
   }
