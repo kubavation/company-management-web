@@ -1,6 +1,6 @@
 <a mat-list-item (click)="onOptionSelected(option)"
-   class="menu-list-item">
-  <mat-icon class="routeIcon"></mat-icon>
+   class="menu-list-item nav-item">
+  <mat-icon class="nav-item-icon" *ngIf="!!option.icon">{{option.icon}}</mat-icon>
   {{option.name}}
   <span *ngIf="option.children && option.children.length">
     <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
