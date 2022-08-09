@@ -3,6 +3,10 @@
 <mat-card style="height: 95%;">
   <mat-card-title>Administration</mat-card-title>
   <mat-card-content>
-    TODO
+    <div class="menu-container">
+      <div *ngFor="let option of optionsMock$ | async" style="width: 30%">
+        {{option.name + ''}}
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
