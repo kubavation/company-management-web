@@ -1,34 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import {of} from "rxjs";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Observable, of} from "rxjs";
+import {ConfigOptionGroup} from "./config-option/model/config-option-group";
 
 @Component({
   selector: 'app-administration',
   templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.scss']
+  styleUrls: ['./administration.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdministrationComponent implements OnInit {
+export class AdministrationComponent {
 
-  optionsMock$ = of([
+  optionsMock$: Observable<ConfigOptionGroup[]> = of([
     {
-      name: 'test1'
+      name: 'test1',
+      description: 'test1 desc test1',
+      url: '/test1'
     },
     {
-      name: 'test2'
+      name: 'test2',
+      description: 'test1 desc test1',
+      url: '/test1',
+      icon: 'score'
     },
     {
-      name: 'test3'
+      name: 'test3',
+      description: 'test1 desc test1',
+      url: '/test1',
+      icon: 'score'
     },
     {
-      name: 'test4'
+      name: 'test4',
+      description: 'test1 desc test1',
+      url: '/test1',
+      icon: 'score'
     },
     {
-      name: 'test5'
+      name: 'test5',
+      description: 'test1 desc test1',
+      url: '/test1',
+      icon: 'score'
     }
   ])
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

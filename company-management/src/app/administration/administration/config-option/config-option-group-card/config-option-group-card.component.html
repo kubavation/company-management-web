@@ -1,1 +1,12 @@
-<p>config-option-group-card works!</p>
+<mat-card>
+  <mat-card-title>{{configOptionGroup.name}}</mat-card-title>
+  <mat-card-content>
+    <mat-icon>{{configOptionGroup.icon}}</mat-icon>
+    <div >
+      {{configOptionGroup.description}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="open()">Open</button>
+  </mat-card-actions>
+</mat-card>

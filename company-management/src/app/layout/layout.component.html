@@ -1,4 +1,4 @@
-<mat-toolbar style="height: 10vh">
+<mat-toolbar style="height: 10vh;">
   <button mat-icon-button class="example-icon"
           aria-label="Example icon-button with menu icon"
           (click)="sidenav.toggle()">
@@ -8,7 +8,7 @@
   <span class="example-spacer"></span>
 </mat-toolbar>
 <mat-sidenav-container hasBackdrop="false">
-  <mat-sidenav #sidenav mode="push" disableClose="true" >
+  <mat-sidenav #sidenav mode="push" disableClose="true" style="width:10vw">
     <mat-nav-list *ngFor="let menuOption of (menuOptions$ | async)">
       <app-nav-item [option]="menuOption"></app-nav-item>
     </mat-nav-list>
