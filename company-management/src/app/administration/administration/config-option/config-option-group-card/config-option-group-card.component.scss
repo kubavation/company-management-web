@@ -1,0 +1,21 @@
+.config-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.config-title {
+  font-size: 24px;
+}
+
+.config-description {
+  font-size: 15px;
+}
+
+.title-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon {
+  transform: scale(2);
+}

@@ -1,10 +1,8 @@
-<!--<p>administration works!</p>-->
-<!--<a routerLink="organisations">organisations</a>-->
 <mat-card style="height: 95%;">
   <mat-card-title>Administration</mat-card-title>
   <mat-card-content>
     <div class="menu-container">
-      <div *ngFor="let option of optionsMock$ | async" style="width: 30vw; height: 30%">
+      <div *ngFor="let option of optionsMock$ | async" style="width: 20vw; height: 30%">
         <app-config-option-group-card [configOptionGroup]="option"></app-config-option-group-card>
       </div>
     </div>

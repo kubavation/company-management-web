@@ -1,12 +1,20 @@
 <mat-card>
-  <mat-card-title>{{configOptionGroup.name}}</mat-card-title>
+  <mat-card-title class="config-title">
+    <div class="title-div">
+        <div>{{configOptionGroup.name}}</div>
+        <div>
+          <mat-icon class="icon">{{configOptionGroup.icon}}</mat-icon>
+        </div>
+    </div>
+  </mat-card-title>
   <mat-card-content>
-    <mat-icon>{{configOptionGroup.icon}}</mat-icon>
-    <div >
+    <div class="config-description">
       {{configOptionGroup.description}}
     </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button (click)="open()">Open</button>
+  <mat-card-actions class="config-actions">
+    <button (click)="open()" mat-fab color="warn" class="config-group-button">
+      <mat-icon class="icon">exit_to_app</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>
