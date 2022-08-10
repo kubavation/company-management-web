@@ -16,9 +16,10 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import { ConfigOptionGroupCardComponent } from './administration/config-option/config-option-group-card/config-option-group-card.component';
 
 @NgModule({
-  declarations: [AdministrationComponent, OrganisationComponent, OrganisationTableComponent, OrganisationDetailsComponent],
+  declarations: [AdministrationComponent, OrganisationComponent, OrganisationTableComponent, OrganisationDetailsComponent, ConfigOptionGroupCardComponent],
     imports: [
         CommonModule,
         AdministrationRoutingModule,
