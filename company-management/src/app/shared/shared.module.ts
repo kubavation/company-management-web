@@ -7,6 +7,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import { EmployeeTableComponent } from './employee/employee-table/employee-table.component';
 
 
 
@@ -15,9 +16,16 @@ import {MatButtonModule} from "@angular/material/button";
     BaseModalComponent,
     ConfirmationModalComponent,
     AbstractBaseModalComponent,
+    EmployeeTableComponent,
   ],
   imports: [
     CommonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDialogModule,
+    MatButtonModule
+  ],
+  exports: [
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
