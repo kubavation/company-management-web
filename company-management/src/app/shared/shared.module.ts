@@ -8,6 +8,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { EmployeeTableComponent } from './employee/employee-table/employee-table.component';
+import { EmployeeComponent } from './employee/employee.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -17,13 +19,15 @@ import { EmployeeTableComponent } from './employee/employee-table/employee-table
     ConfirmationModalComponent,
     AbstractBaseModalComponent,
     EmployeeTableComponent,
+    EmployeeComponent,
   ],
   imports: [
     CommonModule,
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   exports: [
     MatSidenavModule,

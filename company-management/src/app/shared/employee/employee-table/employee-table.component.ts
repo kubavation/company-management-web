@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {Employee} from "../model/employee";
 
 @Component({
   selector: 'app-employee-table',
@@ -7,6 +8,10 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeeTableComponent {
+
+  @Input() employees: Employee[];
+
+  columns: string[] = ['firstName', 'lastName'];
 
   constructor() { }
 
