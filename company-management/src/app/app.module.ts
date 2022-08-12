@@ -15,19 +15,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {LayoutModule} from "./layout/layout.module";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import { BaseModalComponent } from './shared/base-modal/base-modal.component';
 import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { ConfirmationModalProvider } from './shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service';
-import { AbstractBaseModalComponent } from './shared/abstract-base-modal/abstract-base-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BaseModalComponent,
-    ConfirmationModalComponent,
-    AbstractBaseModalComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
