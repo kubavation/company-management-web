@@ -10,6 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { EmployeeTableComponent } from './employee/employee-table/employee-table.component';
 import { EmployeeComponent } from './employee/employee.component';
 import {MatTableModule} from "@angular/material/table";
+import { EmployeeModalComponent } from './employee/employee-modal/employee-modal.component';
 
 
 
@@ -20,6 +21,7 @@ import {MatTableModule} from "@angular/material/table";
     AbstractBaseModalComponent,
     EmployeeTableComponent,
     EmployeeComponent,
+    EmployeeModalComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,9 @@ import {MatTableModule} from "@angular/material/table";
     MatListModule,
     MatDialogModule,
     MatButtonModule
+  ],
+  entryComponents: [
+    EmployeeModalComponent
   ]
 })
 export class SharedModule { }
