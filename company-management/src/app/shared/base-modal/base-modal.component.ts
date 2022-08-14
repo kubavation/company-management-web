@@ -17,10 +17,6 @@ export class BaseModalComponent<T> {
   constructor() {
   }
 
-  public show(): Observable<T | undefined> {
-    return this.dialogConfig?.dialogRef.afterClosed();
-  }
-
   public onSave(): void {
     this.dialogConfig?.dialogRef.close(this.value);
   }

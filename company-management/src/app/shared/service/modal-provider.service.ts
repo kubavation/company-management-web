@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable, TemplateRef} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {Observable} from "rxjs";
+import {BaseModalComponent} from "../base-modal/base-modal.component";
 
 @Injectable({
   providedIn: 'root'

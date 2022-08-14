@@ -29,7 +29,6 @@ export class LayoutComponent {
   }
 
   searchEmployee(): void {
-    console.log('opening')
     this.modalProviderService.open(EmployeeModalComponent, {
       width: '500px',
       height: '400px'
