@@ -6,6 +6,7 @@ import {Employee} from "../model/employee";
 import {EmployeeTableComponent} from "../employee-table/employee-table.component";
 import {Observable} from "rxjs";
 import {EmployeeComponent} from "../employee.component";
+import {BaseModalConfig} from "../../base-modal/config/base-modal-config";
 
 @Component({
   selector: 'app-employee-modal',
@@ -13,24 +14,19 @@ import {EmployeeComponent} from "../employee.component";
   styleUrls: ['./employee-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeeModalComponent extends BaseModalComponent<Employee> implements OnInit {
+export class EmployeeModalComponent extends BaseModalComponent<Employee> {
 
   public readonly title = 'Employees';
+  dialogConfig: BaseModalConfig<Employee>;
 
   constructor(public dialogRef: MatDialogRef<EmployeeModalComponent>) {
     super();
+    this.dialogConfig = {
+      title: this.title,
+      dialogRef: dialogRef
+    }
   }
 
-  ngOnInit() {
-  }
-  // public onSave(): Observable<Employee> {
-  //   console.log('on save 2')
-  //   return super.onSave();
- // }
-  //
-  // public onCancel() {
-  //   console.log('on cancel')
-  // }
 
 
 }

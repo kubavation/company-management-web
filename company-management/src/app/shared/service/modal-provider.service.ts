@@ -10,7 +10,6 @@ export class ModalProviderService {
   constructor(private dialog: MatDialog) { }
 
   public open(component, config): Observable<any> {
-    console.log(component)
     return this.dialog.open(component, config).afterClosed();
   }
 }

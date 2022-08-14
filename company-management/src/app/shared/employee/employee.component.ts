@@ -18,6 +18,5 @@ export class EmployeeComponent {
 
   select(employee: Employee) {
     this.selectedEmployee = employee;
-    console.log(employee)
   }
 }

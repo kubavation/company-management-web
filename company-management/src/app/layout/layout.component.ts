@@ -34,7 +34,6 @@ export class LayoutComponent {
       width: '500px',
       height: '400px'
     }).subscribe(res => {
-      console.log('RESULLT')
       console.log(res)
     })
   }

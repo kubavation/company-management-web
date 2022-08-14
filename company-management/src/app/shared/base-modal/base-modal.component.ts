@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Observable, of} from "rxjs";
 import {tap} from "rxjs/operators";
+import {BaseModalConfig} from "./config/base-modal-config";
 
 @Component({
   selector: 'app-base-modal',
@@ -11,24 +12,21 @@ import {tap} from "rxjs/operators";
 export class BaseModalComponent<T> {
 
   @Input() value: T | undefined;
-
-  public readonly title = 'Employees';
-
-  @Input() dialogRef: MatDialogRef<any>;
+  @Input() dialogConfig: BaseModalConfig<T>;
 
   constructor() {
   }
 
   public show(): Observable<T | undefined> {
-    return this.dialogRef.afterClosed();
+    return this.dialogConfig?.dialogRef.afterClosed();
   }
 
   public onSave(): void {
-    this.dialogRef.close(this.value);
+    this.dialogConfig?.dialogRef.close(this.value);
   }
 
   public onCancel(): void {
-    this.dialogRef.close(undefined);
+    this.dialogConfig?.dialogRef.close(undefined);
   }
 
 
