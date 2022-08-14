@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Employee} from "../model/employee";
 
 @Component({
@@ -10,9 +10,15 @@ import {Employee} from "../model/employee";
 export class EmployeeTableComponent {
 
   @Input() employees: Employee[];
+  @Output() onSelected = new EventEmitter<Employee>();
 
-  columns: string[] = ['firstName', 'lastName'];
+  columns: string[] = ['id', 'firstName', 'lastName'];
+  selected: Employee;
 
   constructor() { }
 
+  select(row: Employee): void {
+    this.selected = row;
+    this.onSelected.next(this.selected);
+  }
 }

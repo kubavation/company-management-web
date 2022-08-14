@@ -33,6 +33,9 @@ export class LayoutComponent {
     this.modalProviderService.open(EmployeeModalComponent, {
       width: '500px',
       height: '400px'
+    }).subscribe(res => {
+      console.log('RESULLT')
+      console.log(res)
     })
   }
 

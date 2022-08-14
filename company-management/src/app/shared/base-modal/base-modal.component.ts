@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {Observable} from "rxjs";
-import {FormBuilder} from "@angular/forms";
-import {FormConfig} from "../model/form-config";
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Observable, of} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-base-modal',
   templateUrl: './base-modal.component.html',
   styleUrls: ['./base-modal.component.scss']
 })
-export class BaseModalComponent {
+export class BaseModalComponent<T> {
 
-  public constructor(private dialog: MatDialog) { }
+  @Input() value: T | undefined;
 
-  ngOnInit(): void {
+  public readonly title = 'Employees';
+
+  @Input() dialogRef: MatDialogRef<any>;
+
+  constructor() {
   }
 
-  public show(): void {
-    this.dialog.open(null);
+  public show(): Observable<T | undefined> {
+    return this.dialogRef.afterClosed();
   }
 
-  public onSave(){
-    return null;
+  public onSave(): void {
+    this.dialogRef.close(this.value);
+  }
+
+  public onCancel(): void {
+    this.dialogRef.close(undefined);
   }
 
 

@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { MatDialogConfig } from \"@angular/material/dialog\";\nexport class ConfirmationModalConfig extends MatDialogConfig {\n  constructor() {\n    super();\n    this.hasBackdrop = false;\n    this.width = '250px';\n    this.height = '200px';\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "./service/employee.service";
+import {Employee} from "./model/employee";
 
 @Component({
   selector: 'app-employee',
@@ -9,9 +10,14 @@ import {EmployeeService} from "./service/employee.service";
 export class EmployeeComponent {
 
   employees$ = this.employeeService.findAll();
+  public selectedEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService) {
 
   }
 
+  select(employee: Employee) {
+    this.selectedEmployee = employee;
+    console.log(employee)
+  }
 }

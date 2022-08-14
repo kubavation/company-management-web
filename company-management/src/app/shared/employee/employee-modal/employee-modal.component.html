@@ -1,7 +1,4 @@
-<h1 mat-dialog-title>TEST</h1>
-<div mat-dialog-content>
-    <app-employee></app-employee>
-</div>
-<div mat-dialog-actions>
+<app-base-modal [value]="employeeTable.selectedEmployee" [dialogRef]="dialogRef">
+  <app-employee #employeeTable></app-employee>
+</app-base-modal>
 
-</div>
