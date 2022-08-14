@@ -5,6 +5,7 @@ import {tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {EmployeeModalComponent} from "../shared/employee/employee-modal/employee-modal.component";
 import {ModalProviderService} from "../shared/service/modal-provider.service";
+import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
 
 @Component({
   selector: 'app-layout',
@@ -21,7 +22,8 @@ export class LayoutComponent {
   );
 
   constructor(private layoutService: LayoutService,
-              private modalProviderService: ModalProviderService) { }
+              private modalProviderService: ModalProviderService,
+              private employeeBSService: EmployeeBsService) { }
 
 
   openSidenav(): void {
@@ -32,9 +34,7 @@ export class LayoutComponent {
     this.modalProviderService.open(EmployeeModalComponent, {
       width: '500px',
       height: '400px'
-    }).subscribe(res => {
-      console.log(res)
-    })
+    }).subscribe(employee => this.employeeBSService.setValue(employee))
   }
 
 
