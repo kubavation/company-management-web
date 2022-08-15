@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {AdministrationModule} from "./administration/administration.module";
 
 const routes: Routes = [
-  {path: 'administration',
-    loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)}
+  {
+    path: 'administration',
+    loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
+  },
+  {
+    path: 'leave-requests',
+    loadChildren: () => import('./leave-requests/leave-requests.module').then(m => m.LeaveRequestsModule)
+  }
 ];
 
 

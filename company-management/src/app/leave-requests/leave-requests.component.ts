@@ -6,10 +6,14 @@ import {LeaveRequestService} from "./service/leave-request.service";
   templateUrl: './leave-requests.component.html',
   styleUrls: ['./leave-requests.component.scss']
 })
-export class LeaveRequestsComponent {
+export class LeaveRequestsComponent implements OnInit {
 
   leaveRequests$ = this.leaveRequestService.findByEmployeeId(1);
 
   constructor(private leaveRequestService: LeaveRequestService) { }
+
+  ngOnInit() {
+    console.log('on init')
+  }
 
 }
