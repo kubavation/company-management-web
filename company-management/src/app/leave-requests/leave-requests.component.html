@@ -1,1 +1,3 @@
-<p>leave-requests works!</p>
+<div *ngFor="let leaveRequest of leaveRequests$ | async">
+  <p>{{leaveRequest.type}}</p>
+</div>
