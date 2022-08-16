@@ -11,7 +11,6 @@ import {switchMap, tap} from "rxjs/operators";
 export class LeaveRequestsComponent {
 
   leaveRequests$ = this.employeesBsService.employee$.pipe(
-    tap(e=> console.log(e)),
     switchMap((employee) => this.leaveRequestService.findByEmployeeId(employee?.id))
   );
 

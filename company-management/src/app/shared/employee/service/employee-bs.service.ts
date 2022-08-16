@@ -10,10 +10,13 @@ export class EmployeeBsService {
     public employee$ = this.employeeSubject.asObservable();
 
     public setValue(value: Employee): void {
-      this.employeeSubject.next(value);
+      if(!!value) {
+        this.employeeSubject.next(value);
+      }
     }
 
     public currentValue(): Employee | undefined {
       return this.employeeSubject.getValue();
     }
 }
+

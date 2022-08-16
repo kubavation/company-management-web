@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {EmployeeModalComponent} from "../shared/employee/employee-modal/employee-modal.component";
 import {ModalProviderService} from "../shared/service/modal-provider.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
+import {EmployeeService} from "../shared/employee/service/employee.service";
 
 @Component({
   selector: 'app-layout',
@@ -18,11 +19,15 @@ export class LayoutComponent {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   menuOptions$ = this.layoutService.getMenuOptions().pipe(
-    tap(() => this.openSidenav())
+    tap(() => this.openSidenav()),
+    tap(() => this.searchEmployee())
   );
+
+  employees$ = this.employeeService.findAll(); //FIXME (connect with auth)
 
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
+              private employeeService: EmployeeService,
               private employeeBSService: EmployeeBsService) { }
 
 
@@ -34,7 +39,11 @@ export class LayoutComponent {
     this.modalProviderService.open(EmployeeModalComponent, {
       width: '500px',
       height: '400px'
-    }).subscribe(employee => this.employeeBSService.setValue(employee))
+    }).subscribe(employee => {
+      console.log('setting')
+      console.log(employee)
+      this.employeeBSService.setValue(employee)
+    })
   }
 
 

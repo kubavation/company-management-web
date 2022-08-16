@@ -9,6 +9,9 @@ import {Employee} from "../model/employee";
 })
 export class EmployeeTableComponent {
 
+  @Input() set selection(employee: Employee | undefined) {
+    this.select(employee);
+  }
   @Input() employees: Employee[];
   @Output() onSelected = new EventEmitter<Employee>();
 

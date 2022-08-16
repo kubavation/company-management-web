@@ -18,7 +18,7 @@
 
   <tr mat-header-row *matHeaderRowDef="columns"></tr>
   <tr mat-row
-      [class.row-selected-row]="selected === row"
+      [class.row-selected-row]="selected?.id === row.id"
       (click)="select(row)"
       *matRowDef="let row; columns: columns;"></tr>
 

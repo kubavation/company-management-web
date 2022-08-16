@@ -6,7 +6,7 @@
   </button>
   <span>Company Management</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button (click)="searchEmployee()">
+  <button mat-icon-button (click)="searchEmployee()" *ngIf="employees$ | async as employees">
      <mat-icon>search</mat-icon>
   </button>
 </mat-toolbar>
