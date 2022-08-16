@@ -3,6 +3,7 @@ import {EmployeeService} from "./service/employee.service";
 import {Employee} from "./model/employee";
 import {EmployeeBsService} from "./service/employee-bs.service";
 import {switchMap, tap} from "rxjs/operators";
+import {SnackbarService} from "../snackbar/snackbar.service";
 
 @Component({
   selector: 'app-employee',
@@ -19,7 +20,8 @@ export class EmployeeComponent {
   public selectedEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService,
-              private employeeBSService: EmployeeBsService) {
+              private employeeBSService: EmployeeBsService,
+              private snackbarService: SnackbarService) {
 
   }
 

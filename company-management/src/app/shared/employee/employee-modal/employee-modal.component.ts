@@ -28,5 +28,8 @@ export class EmployeeModalComponent extends BaseModalComponent<Employee> {
   }
 
 
-
+  onCancel() {
+    console.log('on canceel')
+    super.onCancel();
+  }
 }

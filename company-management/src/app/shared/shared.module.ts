@@ -11,6 +11,9 @@ import { EmployeeComponent } from './employee/employee.component';
 import {MatTableModule} from "@angular/material/table";
 import { EmployeeModalComponent } from './employee/employee-modal/employee-modal.component';
 import {AbstractBaseModalComponent} from "./abstract-base-modal/abstract-base-modal.component";
+import { SnackbarComponent } from './snackbar/snackbar/snackbar.component';
+import {SnackbarService} from "./snackbar/snackbar.service";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 
@@ -22,6 +25,7 @@ import {AbstractBaseModalComponent} from "./abstract-base-modal/abstract-base-mo
     EmployeeTableComponent,
     EmployeeComponent,
     EmployeeModalComponent,
+    SnackbarComponent,
   ],
   imports: [
     CommonModule,
@@ -29,16 +33,19 @@ import {AbstractBaseModalComponent} from "./abstract-base-modal/abstract-base-mo
     MatListModule,
     MatDialogModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   exports: [
     MatSidenavModule,
     MatListModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     EmployeeModalComponent
-  ]
+  ],
+  providers: [SnackbarService]
 })
 export class SharedModule { }

@@ -12,6 +12,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { NavItemComponent } from './nav-item/nav-item.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -32,7 +33,8 @@ import { NavItemComponent } from './nav-item/nav-item.component';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule
   ]
 })
 export class LayoutModule { }
