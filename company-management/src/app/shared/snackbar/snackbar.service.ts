@@ -8,6 +8,6 @@ export class SnackbarService {
   constructor(private _snackBar: MatSnackBar) { }
 
   public success(): void {
-    this._snackBar.openFromComponent(SnackbarComponent);
+    this._snackBar.openFromComponent(SnackbarComponent, {duration: 1000});
   }
 }

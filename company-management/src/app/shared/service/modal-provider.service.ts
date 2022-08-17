@@ -1,7 +1,8 @@
 import {Injectable, TemplateRef} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Observable} from "rxjs";
 import {BaseModalComponent} from "../base-modal/base-modal.component";
+import { ComponentType } from '@angular/cdk/overlay';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,18 @@ export class ModalProviderService {
 
   constructor(private dialog: MatDialog) { }
 
-  public open(component, config): Observable<any> {
-    return this.dialog.open(component, config).afterClosed();
+  public open<T extends BaseModalComponent<any>>(component: ComponentType<T>, config): Observable<any> {
+    console.log(component)
+    const templateRef = this.dialog.open(component, config);
+
+    console.log(templateRef.componentInstance)
+    return templateRef.componentInstance.afterSave();
+  }
+}
+
+class c<T>  extends MatDialogRef<T> {
+
+  afterClosed(): Observable<any> {
+    return super.afterClosed().pipe();
   }
 }

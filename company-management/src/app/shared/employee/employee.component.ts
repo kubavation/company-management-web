@@ -27,5 +27,9 @@ export class EmployeeComponent {
 
   select(employee: Employee) {
     this.selectedEmployee = employee;
+    if (!this.selectedEmployee) {
+      console.log('on success')
+      this.snackbarService.success();
+    }
   }
 }
