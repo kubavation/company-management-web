@@ -20,9 +20,3 @@ export class ModalProviderService {
   }
 }
 
-class c<T>  extends MatDialogRef<T> {
-
-  afterClosed(): Observable<any> {
-    return super.afterClosed().pipe();
-  }
-}

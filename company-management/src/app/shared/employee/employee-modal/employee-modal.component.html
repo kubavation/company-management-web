@@ -1,4 +1,4 @@
-<app-base-modal [value]="employeeTable.selectedEmployee" [dialogConfig]="dialogConfig">
+<app-base-modal [dialogConfig]="dialogConfig" (save)="onSave()">
   <app-employee #employeeTable></app-employee>
 </app-base-modal>
 

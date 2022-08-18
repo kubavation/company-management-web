@@ -11,19 +11,19 @@ import {BaseModalConfig} from "./config/base-modal-config";
 })
 export class BaseModalComponent<T> {
 
-  @Input() value: T | undefined;
   @Input() dialogConfig: BaseModalConfig<T>;
+  @Output() save = new EventEmitter<void>();
 
-  testSubject$ = new BehaviorSubject<any>(null);
-  testSubjectObs$ = this.testSubject$.asObservable().pipe(tap(c => console.log('mam ' + c)));
+  public testSubject$ = new Subject<any>();
+  public testSubjectObs$ = this.testSubject$.asObservable();
+
 
   constructor() {
+    this.testSubject$ = new Subject<any>();
   }
 
   public onSave(): void {
-    console.log('on save')
-    //this.dialogConfig?.dialogRef.close(this.value);
-    this.testSubject$.next("ELO")
+    this.save.next();
   }
 
   public onCancel(): void {
@@ -31,11 +31,8 @@ export class BaseModalComponent<T> {
   }
 
   public afterSave(): Observable<any> {
-
-    return this.testSubjectObs$.pipe(
-      tap(c => console.log(c)),
-      switchMap(() => of({id: 1}))
-    )
+    return of({id: -1})
   }
+
 
 }
