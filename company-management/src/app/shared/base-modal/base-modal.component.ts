@@ -12,7 +12,7 @@ import {BaseModalConfig} from "./config/base-modal-config";
 export class BaseModalComponent<T> {
 
   @Input() dialogConfig: BaseModalConfig<T>;
-  @Output() save = new EventEmitter<void>();
+  @Output() save = new EventEmitter<any>();
 
   public testSubject$ = new Subject<any>();
   public testSubjectObs$ = this.testSubject$.asObservable();
@@ -23,7 +23,7 @@ export class BaseModalComponent<T> {
   }
 
   public onSave(): void {
-    this.save.next();
+    this.save.next({id: 'test-1.0'});
   }
 
   public onCancel(): void {
@@ -31,7 +31,7 @@ export class BaseModalComponent<T> {
   }
 
   public afterSave(): Observable<any> {
-    return of({id: -1})
+    return of();
   }
 
 

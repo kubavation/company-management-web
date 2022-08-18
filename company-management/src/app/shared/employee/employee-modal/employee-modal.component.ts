@@ -7,6 +7,7 @@ import {EmployeeTableComponent} from "../employee-table/employee-table.component
 import {Observable, of} from "rxjs";
 import {EmployeeComponent} from "../employee.component";
 import {BaseModalConfig} from "../../base-modal/config/base-modal-config";
+import {SnackbarService} from "../../snackbar/snackbar.service";
 
 @Component({
   selector: 'app-employee-modal',
@@ -19,7 +20,8 @@ export class EmployeeModalComponent extends BaseModalComponent<Employee> {
   public readonly title = 'Employees';
   dialogConfig: BaseModalConfig<Employee>;
 
-  constructor(public dialogRef: MatDialogRef<EmployeeModalComponent>) {
+  constructor(public dialogRef: MatDialogRef<EmployeeModalComponent>,
+              private snackbarService: SnackbarService) {
     super();
     this.dialogConfig = {
       title: this.title,
@@ -27,11 +29,15 @@ export class EmployeeModalComponent extends BaseModalComponent<Employee> {
     }
   }
 
-  onSave() {
-    this.testSubject$.next({id: 12334})
+  onSaveEmployee(employee) {
+    if(!employee) {
+      this.snackbarService.success();
+    }
+    console.log(employee)
+    this.testSubject$.next(employee)
   }
 
   public afterSave(): Observable<any> {
-    return this.testSubject$;
+    return this.testSubject$; //fixme why observable doesnt work
   }
 }
