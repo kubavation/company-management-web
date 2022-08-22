@@ -15,6 +15,8 @@ export class BaseModalComponent<T> {
   @Output() save = new EventEmitter<any>();
 
   @Input() value: any;
+  @Input() saveButtonDisabled = false;
+  @Input() cancelButtonDisabled = false;
 
   public valueSubject$ = new Subject<any>();
 

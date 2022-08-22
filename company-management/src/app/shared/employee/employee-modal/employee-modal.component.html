@@ -1,5 +1,6 @@
 <app-base-modal [dialogConfig]="dialogConfig"
                 (save)="onSaveEmployee($event)"
+                [cancelButtonDisabled]="true"
                 [value]="employeeTable.selectedEmployee">
   <app-employee #employeeTable></app-employee>
 </app-base-modal>
