@@ -14,3 +14,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 //
+
+//snackbar
+
+.success-snackbar {
+  background-color: lawngreen;
+}
+
+.warning-snackbar {
+  background-color: sandybrown;
+}
+
+.error-snackbar {
+  background-color: darkred;
+}
