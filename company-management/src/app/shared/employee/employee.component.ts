@@ -14,21 +14,17 @@ export class EmployeeComponent {
 
   employees$ = this.employeeBSService.employee$.pipe(
     tap((employee) => this.select(employee)),
-    switchMap(() => this.employeeService.findAll())
+    switchMap(() => this.employeeService.findAll().pipe(tap(t => console.log(t))))
   )
 
   public selectedEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService,
-              private employeeBSService: EmployeeBsService,
-              private snackbarService: SnackbarService) {
+              private employeeBSService: EmployeeBsService) {
 
   }
 
   select(employee: Employee) {
     this.selectedEmployee = employee;
-    if (!this.selectedEmployee) {
-      this.snackbarService.success();
-    }
   }
 }

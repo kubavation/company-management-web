@@ -30,14 +30,15 @@ export class EmployeeModalComponent extends BaseModalComponent<Employee> {
   }
 
   onSaveEmployee(employee) {
+
     if(!employee) {
-      this.snackbarService.success();
+      this.snackbarService.success('You have to chooose employee!')
+      return;
     }
-    console.log(employee)
-    this.testSubject$.next(employee)
+    this.valueSubject$.next(employee)
   }
 
   public afterSave(): Observable<any> {
-    return this.testSubject$; //fixme why observable doesnt work
+    return this.valueSubject$;
   }
 }

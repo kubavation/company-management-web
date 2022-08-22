@@ -7,7 +7,12 @@ export class SnackbarService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  public success(): void {
-    this._snackBar.openFromComponent(SnackbarComponent, {duration: 1000});
+  public success(info: string): void {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: info,
+      duration: 2000,
+      horizontalPosition: "right",
+      verticalPosition: "top"
+    });
   }
 }

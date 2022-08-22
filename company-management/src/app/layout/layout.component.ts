@@ -40,8 +40,6 @@ export class LayoutComponent {
       width: '500px',
       height: '400px'
     }).subscribe(employee => {
-      console.log('setting')
-      console.log(employee)
       this.employeeBSService.setValue(employee)
     })
   }

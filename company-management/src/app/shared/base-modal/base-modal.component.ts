@@ -14,16 +14,16 @@ export class BaseModalComponent<T> {
   @Input() dialogConfig: BaseModalConfig<T>;
   @Output() save = new EventEmitter<any>();
 
-  public testSubject$ = new Subject<any>();
-  public testSubjectObs$ = this.testSubject$.asObservable();
+  @Input() value: any;
 
+  public valueSubject$ = new Subject<any>();
 
   constructor() {
-    this.testSubject$ = new Subject<any>();
+    this.valueSubject$ = new Subject<any>();
   }
 
   public onSave(): void {
-    this.save.next({id: 'test-1.0'});
+    this.save.next(this.value);
   }
 
   public onCancel(): void {

@@ -1,4 +1,6 @@
-<app-base-modal [dialogConfig]="dialogConfig" (save)="onSaveEmployee($event)">
+<app-base-modal [dialogConfig]="dialogConfig"
+                (save)="onSaveEmployee($event)"
+                [value]="employeeTable.selectedEmployee">
   <app-employee #employeeTable></app-employee>
 </app-base-modal>
 
