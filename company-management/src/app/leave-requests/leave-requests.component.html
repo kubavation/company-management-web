@@ -1,3 +1,7 @@
+<div *ngFor="let leaveRequestType of leaveRequestTypes$ | async">
+  <p>{{leaveRequestType}}</p>
+</div>
+
 <div *ngFor="let leaveRequest of leaveRequests$ | async">
   <p>{{leaveRequest.type}}</p>
 </div>
