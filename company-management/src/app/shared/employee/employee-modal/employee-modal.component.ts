@@ -32,10 +32,11 @@ export class EmployeeModalComponent extends BaseModalComponent<Employee> {
   onSaveEmployee(employee) {
 
     if(!employee) {
-      this.snackbarService.success('You have to chooose employee!')
+      this.snackbarService.success('First uou have to chooose employee!')
       return;
     }
-    this.valueSubject$.next(employee)
+    this.valueSubject$.next(employee);
+    this.dialogRef.close();
   }
 
   public afterSave(): Observable<any> {
