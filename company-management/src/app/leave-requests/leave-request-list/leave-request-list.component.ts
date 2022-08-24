@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {LeaveRequest} from "../model/leave-request";
 
 @Component({
   selector: 'app-leave-request-list',
@@ -8,7 +9,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class LeaveRequestListComponent {
 
-  @Input() leaveRequests: any[];
+  @Input() leaveRequests: LeaveRequest[];
 
   constructor() { }
 
