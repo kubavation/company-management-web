@@ -1,5 +1,7 @@
 <div style="width: 100%">
-  <app-employee-table [employees]="employees$ | async"
+  <app-employee-table
+                      *ngIf="(employee$ | async) || employeeData"
+                      [employees]="employeeData"
                       [selection]="selectedEmployee"
                       (onSelected)="select($event)">
   </app-employee-table>

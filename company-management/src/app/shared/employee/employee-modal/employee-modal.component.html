@@ -1,4 +1,7 @@
-<app-base-modal [value]="employeeTable.selectedEmployee" [dialogConfig]="dialogConfig">
-  <app-employee #employeeTable></app-employee>
+<app-base-modal [dialogConfig]="dialogConfig"
+                (save)="onSaveEmployee(employeeTable.selectedEmployee)"
+                [cancelButtonDisabled]="true"
+                [value]="employeeTable.selectedEmployee">
+  <app-employee #employeeTable [employees]="employeeData"></app-employee>
 </app-base-modal>
 

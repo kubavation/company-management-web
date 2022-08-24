@@ -14,6 +14,9 @@ import {AbstractBaseModalComponent} from "./abstract-base-modal/abstract-base-mo
 import { SnackbarComponent } from './snackbar/snackbar/snackbar.component';
 import {SnackbarService} from "./snackbar/snackbar.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatOptionModule} from "@angular/material/core";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -34,14 +37,21 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatDialogModule,
     MatButtonModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   exports: [
     MatSidenavModule,
     MatListModule,
+    MatTableModule,
     MatDialogModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   entryComponents: [
     EmployeeModalComponent

@@ -1,3 +1,13 @@
-<div *ngFor="let leaveRequest of leaveRequests$ | async">
-  <p>{{leaveRequest.type}}</p>
+<mat-form-field appearance="outline">
+  <mat-select>
+    <mat-option *ngFor="let leaveRequestType of leaveRequestTypes$ | async" [value]="leaveRequestType.value">
+      {{leaveRequestType.key}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div>
+  <app-leave-request-list
+    [leaveRequests]="leaveRequests$ | async">
+  </app-leave-request-list>
 </div>

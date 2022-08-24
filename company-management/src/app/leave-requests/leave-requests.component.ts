@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LeaveRequestService} from "./service/leave-request.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
-import {switchMap, tap} from "rxjs/operators";
+import {filter, switchMap, tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-leave-requests',
@@ -10,9 +10,10 @@ import {switchMap, tap} from "rxjs/operators";
 })
 export class LeaveRequestsComponent {
 
+  leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
+
   leaveRequests$ = this.employeesBsService.employee$.pipe(
-    switchMap((employee) => this.leaveRequestService.findByEmployeeId(employee?.id))
-  );
+    switchMap((employee) => this.leaveRequestService.findByEmployeeId(employee?.id)));
 
 
   constructor(private leaveRequestService: LeaveRequestService,

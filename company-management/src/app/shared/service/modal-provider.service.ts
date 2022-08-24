@@ -11,18 +11,13 @@ export class ModalProviderService {
 
   constructor(private dialog: MatDialog) { }
 
-  public open<T extends BaseModalComponent<any>>(component: ComponentType<T>, config): Observable<any> {
-    console.log(component)
-    const templateRef = this.dialog.open(component, config);
-
-    console.log(templateRef.componentInstance)
+  public open<T extends BaseModalComponent<any>>(component: ComponentType<T>, config?: any, data?: any): Observable<any> {
+    const templateRef = this.dialog.open(component, {
+      ...config,
+      data,
+      disableClose: true
+    });
     return templateRef.componentInstance.afterSave();
   }
 }
 
-class c<T>  extends MatDialogRef<T> {
-
-  afterClosed(): Observable<any> {
-    return super.afterClosed().pipe();
-  }
-}

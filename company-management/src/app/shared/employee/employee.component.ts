@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EmployeeService} from "./service/employee.service";
 import {Employee} from "./model/employee";
 import {EmployeeBsService} from "./service/employee-bs.service";
@@ -12,24 +12,28 @@ import {SnackbarService} from "../snackbar/snackbar.service";
 })
 export class EmployeeComponent {
 
-  employees$ = this.employeeBSService.employee$.pipe(
-    tap((employee) => this.select(employee)),
-    switchMap(() => this.employeeService.findAll())
+   employee$ = this.employeeBSService.employee$.pipe(
+    tap((employee) => {
+      if (this.employeeData) {
+        console.log('selecting')
+        this.select(employee)
+      }
+    }),
   )
 
+  @Input() set employees(data: Employee[]) {
+     this.employeeData = data;
+  }
+
+  employeeData: Employee[];
   public selectedEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService,
-              private employeeBSService: EmployeeBsService,
-              private snackbarService: SnackbarService) {
+              private employeeBSService: EmployeeBsService) {
 
   }
 
   select(employee: Employee) {
     this.selectedEmployee = employee;
-    if (!this.selectedEmployee) {
-      console.log('on success')
-      this.snackbarService.success();
-    }
   }
 }

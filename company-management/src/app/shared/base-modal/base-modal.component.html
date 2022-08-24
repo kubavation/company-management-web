@@ -3,6 +3,6 @@
   <ng-content></ng-content>
 </div>
 <div mat-dialog-actions class="dialog-action">
-  <button mat-button (click)="onSave()">Save</button>
-  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [disabled]="saveButtonDisabled" (click)="onSave()">Save</button>
+  <button mat-button [disabled]="cancelButtonDisabled" (click)="onCancel()">Cancel</button>
 </div>

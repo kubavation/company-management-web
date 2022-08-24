@@ -1,7 +1,5 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
-import {switchMap, tap} from "rxjs/operators";
 import {BaseModalConfig} from "./config/base-modal-config";
 
 @Component({
@@ -11,19 +9,21 @@ import {BaseModalConfig} from "./config/base-modal-config";
 })
 export class BaseModalComponent<T> {
 
-  @Input() value: T | undefined;
   @Input() dialogConfig: BaseModalConfig<T>;
+  @Output() save = new EventEmitter<any>();
 
-  testSubject$ = new BehaviorSubject<any>(null);
-  testSubjectObs$ = this.testSubject$.asObservable().pipe(tap(c => console.log('mam ' + c)));
+  @Input() value: any;
+  @Input() saveButtonDisabled = false;
+  @Input() cancelButtonDisabled = false;
+
+  public valueSubject$ = new Subject<any>();
 
   constructor() {
+    this.valueSubject$ = new Subject<any>();
   }
 
   public onSave(): void {
-    console.log('on save')
-    //this.dialogConfig?.dialogRef.close(this.value);
-    this.testSubject$.next("ELO")
+    this.save.next(this.value);
   }
 
   public onCancel(): void {
@@ -31,11 +31,8 @@ export class BaseModalComponent<T> {
   }
 
   public afterSave(): Observable<any> {
-
-    return this.testSubjectObs$.pipe(
-      tap(c => console.log(c)),
-      switchMap(() => of({id: 1}))
-    )
+    return of();
   }
+
 
 }

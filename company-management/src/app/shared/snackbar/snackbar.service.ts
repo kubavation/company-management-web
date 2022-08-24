@@ -7,7 +7,24 @@ export class SnackbarService {
 
   constructor(private _snackBar: MatSnackBar) { }
 
-  public success(): void {
-    this._snackBar.openFromComponent(SnackbarComponent, {duration: 1000});
+  public success(msg: string): void {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: msg,
+      panelClass: ['success-snackbar']
+    });
+  }
+
+  public warning(msg: string): void {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: msg,
+      panelClass: ['warning-snackbar']
+    });
+  }
+
+  public error(msg: string): void {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      data: msg,
+      panelClass: ['error-snackbar']
+    });
   }
 }

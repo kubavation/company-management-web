@@ -12,13 +12,8 @@ import {
 export class AppComponent {
   title = 'company-management';
 
-  constructor(private cc: ConfirmationModalProvider) {
+  constructor() {
 
-  }
-
-  open() {
-    this.cc.open()
-      .subscribe(res => console.log(res))
   }
 
 }
