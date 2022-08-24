@@ -1,13 +1,14 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {LayoutService} from "./service/layout.service";
 import {MatSidenav} from "@angular/material/sidenav";
-import {tap} from "rxjs/operators";
+import {switchMap, tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {EmployeeModalComponent} from "../shared/employee/employee-modal/employee-modal.component";
 import {ModalProviderService} from "../shared/service/modal-provider.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
 import {EmployeeService} from "../shared/employee/service/employee.service";
 import {Employee} from "../shared/employee/model/employee";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-layout',
@@ -19,16 +20,12 @@ export class LayoutComponent {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
-  // menuOptions$ = this.layoutService.getMenuOptions().pipe(
-  //   tap(() => this.openSidenav()),
-  //  // tap(() => this.searchEmployee())
-  // );
-
-  menuOptions$ = this.layoutService.getMenuOptions().pipe(
-    tap(() => this.openSidenav()),
-    // tap(() => this.searchEmployee())
-  );
-
+  menuOptions$ = this.employeeBSService.employee$
+    .pipe(
+      tap(_ => console.log(_)),
+      switchMap((employee) => this.layoutService.getMenuOptions()), //TODO FIX WITH PREVILIGES
+      tap(_ => this.openSidenav())
+    )
 
   employees$ = this.employeeService.findAll()
     .pipe(
@@ -38,7 +35,10 @@ export class LayoutComponent {
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
-              private employeeBSService: EmployeeBsService) { }
+              private router: Router,
+              private employeeBSService: EmployeeBsService) {
+    this.router.navigate(['']);
+  }
 
 
   openSidenav(): void {
