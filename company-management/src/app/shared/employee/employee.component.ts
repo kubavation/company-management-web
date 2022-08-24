@@ -12,16 +12,20 @@ import {SnackbarService} from "../snackbar/snackbar.service";
 })
 export class EmployeeComponent {
 
-  // employees$ = this.employeeBSService.employee$.pipe(
-  //   tap((employee) => this.select(employee)),
-  //   switchMap(() => this.employeeService.findAll())
-  // )
+   employee$ = this.employeeBSService.employee$.pipe(
+    tap((employee) => {
+      if (this.employeeData) {
+        console.log('selecting')
+        this.select(employee)
+      }
+    }),
+  )
 
   @Input() set employees(data: Employee[]) {
-     this.empployeeData = data;
+     this.employeeData = data;
   }
 
-  empployeeData: Employee[];
+  employeeData: Employee[];
   public selectedEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService,
