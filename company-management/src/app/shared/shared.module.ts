@@ -40,11 +40,12 @@ import {MatSelectModule} from "@angular/material/select";
     MatSnackBarModule,
     MatOptionModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   exports: [
     MatSidenavModule,
     MatListModule,
+    MatTableModule,
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,

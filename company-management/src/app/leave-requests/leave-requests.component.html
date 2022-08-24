@@ -6,10 +6,8 @@
   </mat-select>
 </mat-form-field>
 
-<div class="mat-elevation-z20">
-
-  <div *ngFor="let leaveRequest of leaveRequests$ | async">
-    <p>{{leaveRequest.type}}</p>
-  </div>
-
+<div>
+  <app-leave-request-list
+    [leaveRequests]="leaveRequests$ | async">
+  </app-leave-request-list>
 </div>

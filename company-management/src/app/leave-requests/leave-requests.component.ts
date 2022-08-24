@@ -13,8 +13,7 @@ export class LeaveRequestsComponent {
   leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
 
   leaveRequests$ = this.employeesBsService.employee$.pipe(
-    switchMap((employee) => this.leaveRequestService.findByEmployeeId(employee?.id))
-  );
+    switchMap((employee) => this.leaveRequestService.findByEmployeeId(employee?.id)));
 
 
   constructor(private leaveRequestService: LeaveRequestService,

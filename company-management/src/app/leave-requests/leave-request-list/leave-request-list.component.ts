@@ -11,6 +11,10 @@ export class LeaveRequestListComponent {
 
   @Input() leaveRequests: LeaveRequest[];
 
+  selected: LeaveRequest | undefined;
+
+  public readonly DATA_TABLE_COLUMNS = ['type', 'days', 'hours'];
+
   constructor() { }
 
 
