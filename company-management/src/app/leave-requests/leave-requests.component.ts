@@ -10,6 +10,8 @@ import {filter, switchMap, tap} from "rxjs/operators";
 })
 export class LeaveRequestsComponent {
 
+  defa
+
   leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
 
   leaveRequests$ = this.employeesBsService.employee$.pipe(
