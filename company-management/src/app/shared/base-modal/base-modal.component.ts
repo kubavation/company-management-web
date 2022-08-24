@@ -1,7 +1,5 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
-import {switchMap, tap} from "rxjs/operators";
 import {BaseModalConfig} from "./config/base-modal-config";
 
 @Component({

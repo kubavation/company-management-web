@@ -6,18 +6,13 @@ import {Employee} from "../model/employee";
   providedIn: 'root'
 })
 export class EmployeeBsService {
-    private employeeSubject = new BehaviorSubject<Employee>(null);
+    private employeeSubject = new ReplaySubject<Employee>(1);
     public employee$ = this.employeeSubject.asObservable();
 
     public setValue(value: Employee): void {
-      console.log('setting'); console.log(value)
       if(!!value) {
         this.employeeSubject.next(value);
       }
     }
-
-    // public currentValue(): Employee | undefined {
-    //   return this.employeeSubject.getValue();
-    // }
 }
 

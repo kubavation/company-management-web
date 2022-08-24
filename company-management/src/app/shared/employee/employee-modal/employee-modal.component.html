@@ -2,6 +2,6 @@
                 (save)="onSaveEmployee($event)"
                 [cancelButtonDisabled]="true"
                 [value]="employeeTable.selectedEmployee">
-  <app-employee #employeeTable></app-employee>
+  <app-employee #employeeTable [employees]="employeeData"></app-employee>
 </app-base-modal>
 

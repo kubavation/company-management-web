@@ -7,6 +7,7 @@ import {EmployeeModalComponent} from "../shared/employee/employee-modal/employee
 import {ModalProviderService} from "../shared/service/modal-provider.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
 import {EmployeeService} from "../shared/employee/service/employee.service";
+import {Employee} from "../shared/employee/model/employee";
 
 @Component({
   selector: 'app-layout',
@@ -18,12 +19,21 @@ export class LayoutComponent {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
+  // menuOptions$ = this.layoutService.getMenuOptions().pipe(
+  //   tap(() => this.openSidenav()),
+  //  // tap(() => this.searchEmployee())
+  // );
+
   menuOptions$ = this.layoutService.getMenuOptions().pipe(
     tap(() => this.openSidenav()),
-    tap(() => this.searchEmployee())
+    // tap(() => this.searchEmployee())
   );
 
-  employees$ = this.employeeService.findAll(); //FIXME (connect with auth)
+
+  employees$ = this.employeeService.findAll()
+    .pipe(
+      tap((employees) => this.searchEmployee(employees))
+    ); //FIXME (connect with auth)
 
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
@@ -35,11 +45,11 @@ export class LayoutComponent {
     this.sidenav.open();
   }
 
-  searchEmployee(): void {
+  searchEmployee(employees?: Employee[]): void {
     this.modalProviderService.open(EmployeeModalComponent, {
       width: '500px',
-      height: '400px'
-    }).subscribe(employee => {
+      height: '400px',
+    }, employees).subscribe(employee => {
       this.employeeBSService.setValue(employee)
     })
   }

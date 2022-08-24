@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {ChangeDetectionStrategy, Component, Inject, OnInit, Optional, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {delay, tap} from "rxjs/operators";
 import {BaseModalComponent} from "../../base-modal/base-modal.component";
 import {Employee} from "../model/employee";
@@ -18,15 +18,20 @@ import {SnackbarService} from "../../snackbar/snackbar.service";
 export class EmployeeModalComponent extends BaseModalComponent<Employee> {
 
   public readonly title = 'Employees';
+  public employeeData?: Employee[];
   dialogConfig: BaseModalConfig<Employee>;
 
+
   constructor(public dialogRef: MatDialogRef<EmployeeModalComponent>,
-              private snackbarService: SnackbarService) {
+              private snackbarService: SnackbarService,
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
     super();
     this.dialogConfig = {
       title: this.title,
       dialogRef: dialogRef
     }
+
+    this.employeeData = data;
   }
 
   onSaveEmployee(employee) {

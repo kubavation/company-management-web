@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EmployeeService} from "./service/employee.service";
 import {Employee} from "./model/employee";
 import {EmployeeBsService} from "./service/employee-bs.service";
@@ -12,11 +12,16 @@ import {SnackbarService} from "../snackbar/snackbar.service";
 })
 export class EmployeeComponent {
 
-  employees$ = this.employeeBSService.employee$.pipe(
-    tap((employee) => this.select(employee)),
-    switchMap(() => this.employeeService.findAll())
-  )
+  // employees$ = this.employeeBSService.employee$.pipe(
+  //   tap((employee) => this.select(employee)),
+  //   switchMap(() => this.employeeService.findAll())
+  // )
 
+  @Input() set employees(data: Employee[]) {
+     this.empployeeData = data;
+  }
+
+  empployeeData: Employee[];
   public selectedEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService,
