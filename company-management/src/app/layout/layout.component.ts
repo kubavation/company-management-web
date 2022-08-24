@@ -47,7 +47,7 @@ export class LayoutComponent {
 
   searchEmployee(employees?: Employee[]): void {
     this.modalProviderService.open(EmployeeModalComponent, {
-      width: '500px',
+      width: '700px',
       height: '400px',
     }, employees).subscribe(employee => {
       this.employeeBSService.setValue(employee)
