@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment as Env} from "../../../environments/environment";
 import {Employee} from "../../shared/employee/model/employee";
+import {KeyValue} from "../../shared/model/key-value";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class LeaveRequestService {
 
   constructor(private http: HttpClient) { }
 
-  public findLeaveRequestTypes(): Observable<any[]> {
+  public findLeaveRequestTypes(): Observable<KeyValue<string>[]> {
     return this.http.get<any[]>(`${Env.serverUrl}/leave-privileges/types`)
   }
 
