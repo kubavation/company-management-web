@@ -36,7 +36,7 @@ export class LayoutComponent {
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
               private router: Router,
-              private employeeBSService: EmployeeBsService) {
+              public employeeBSService: EmployeeBsService) {
     this.router.navigate(['']);
   }
 
