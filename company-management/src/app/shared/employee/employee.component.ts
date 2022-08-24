@@ -14,7 +14,7 @@ export class EmployeeComponent {
 
   employees$ = this.employeeBSService.employee$.pipe(
     tap((employee) => this.select(employee)),
-    switchMap(() => this.employeeService.findAll().pipe(tap(t => console.log(t))))
+    switchMap(() => this.employeeService.findAll())
   )
 
   public selectedEmployee: Employee | undefined;

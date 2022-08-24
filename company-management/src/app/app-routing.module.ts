@@ -9,6 +9,9 @@ const routes: Routes = [
   {
     path: 'leave-requests',
     loadChildren: () => import('./leave-requests/leave-requests.module').then(m => m.LeaveRequestsModule)
+  },
+  {
+    path: '**', redirectTo: ''
   }
 ];
 
