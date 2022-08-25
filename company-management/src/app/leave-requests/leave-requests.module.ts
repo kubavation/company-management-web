@@ -6,6 +6,7 @@ import {LeaveRequestsRoutingModule} from "./leave-requests-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -14,10 +15,11 @@ import {MatSelectModule} from "@angular/material/select";
     LeaveRequestsComponent,
     LeaveRequestListComponent
   ],
-  imports: [
-    CommonModule,
-    LeaveRequestsRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        LeaveRequestsRoutingModule,
+        SharedModule,
+        ReactiveFormsModule
+    ]
 })
 export class LeaveRequestsModule { }
