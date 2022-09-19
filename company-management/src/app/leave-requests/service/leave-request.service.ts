@@ -5,6 +5,7 @@ import {environment as Env} from "../../../environments/environment";
 import {Employee} from "../../shared/employee/model/employee";
 import {KeyValue} from "../../shared/model/key-value";
 import {LeaveRequest} from "../model/leave-request";
+import {LeaveRequestType} from "../model/leave-request-type";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class LeaveRequestService {
   }
 
   public findByEmployeeId(employeeId: number): Observable<LeaveRequest[]> {
-    return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/${employeeId}`)
+    return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/employees/${employeeId}`)
+  }
+
+  public findByEmployeeIdAndRequestType(employeeId: number, requestType: LeaveRequestType): Observable<LeaveRequest[]> {
+    return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/employees/${employeeId}/types/${requestType}`)
   }
 }

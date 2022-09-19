@@ -25,7 +25,7 @@ export class LeaveRequestsComponent {
 
   leaveRequests$ = combineLatest([this.employeesBsService.employee$, this.leaveRequestTypeControlValue$])
     .pipe(
-      switchMap(([employee, requestType]) => this.leaveRequestService.findByEmployeeId(employee?.id))
+      switchMap(([employee, requestType]) => this.leaveRequestService.findByEmployeeIdAndRequestType(employee?.id, requestType))
     );
 
 
