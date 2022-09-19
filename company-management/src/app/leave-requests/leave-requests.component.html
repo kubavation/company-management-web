@@ -1,7 +1,7 @@
-<form [formGroup]="requestTypeForm">
+<form>
   <mat-form-field appearance="outline">
-    <mat-select>
-      <mat-option *ngFor="let leaveRequestType of leaveRequestTypes$ | async" [value]="leaveRequestType.value" [formControl]="requestType">
+    <mat-select [formControl]="leaveRequestTypeControl">
+      <mat-option *ngFor="let leaveRequestType of leaveRequestTypes$ | async" [value]="leaveRequestType.value">
         {{leaveRequestType.key}}
       </mat-option>
     </mat-select>
