@@ -15,6 +15,7 @@ import {combineLatest} from "rxjs";
 export class LeaveRequestsComponent {
 
   leaveRequestTypeControl = new FormControl('');
+  advancedFiltersControls = new FormControl(false);
 
   leaveRequestTypeControlValue$ = this.leaveRequestTypeControl.valueChanges
     .pipe(
@@ -34,6 +35,10 @@ export class LeaveRequestsComponent {
               private employeesBsService: EmployeeBsService) {
 
 
+  }
+
+  advancedFiltersChange({checked}): void {
+    console.log(checked)
   }
 
 }

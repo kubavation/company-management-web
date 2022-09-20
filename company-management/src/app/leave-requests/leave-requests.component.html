@@ -11,8 +11,13 @@
 </form>
 
 <div>
-  <h4>Advanced filters</h4>
-  <p>todo</p>
+  <span>Advanced filters
+    <mat-slide-toggle
+      [formControl]="advancedFiltersControls"
+      (change)="advancedFiltersChange($event)">
+    </mat-slide-toggle>
+  </span>
+  <app-leave-request-list-filters></app-leave-request-list-filters>
 </div>
 
 <div>

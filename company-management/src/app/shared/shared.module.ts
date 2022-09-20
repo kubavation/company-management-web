@@ -17,6 +17,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 
@@ -41,6 +43,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatOptionModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatSidenavModule,
@@ -51,7 +54,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatSnackBarModule,
     MatOptionModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   entryComponents: [
     EmployeeModalComponent
