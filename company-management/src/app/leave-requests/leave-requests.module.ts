@@ -7,13 +7,15 @@ import {SharedModule} from "../shared/shared.module";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import { LeaveRequestListFiltersComponent } from './leave-request-list-filters/leave-request-list-filters.component';
 
 
 
 @NgModule({
   declarations: [
     LeaveRequestsComponent,
-    LeaveRequestListComponent
+    LeaveRequestListComponent,
+    LeaveRequestListFiltersComponent
   ],
     imports: [
         CommonModule,
