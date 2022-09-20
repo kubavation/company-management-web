@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment as Env} from "../../../environments/environment";
 import {Employee} from "../../shared/employee/model/employee";
@@ -18,11 +18,10 @@ export class LeaveRequestService {
     return this.http.get<KeyValue<string>[]>(`${Env.serverUrl}/leave-privileges/types`)
   }
 
-  public findByEmployeeId(employeeId: number): Observable<LeaveRequest[]> {
-    return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/employees/${employeeId}`)
-  }
-
   public findByEmployeeIdAndRequestType(employeeId: number, requestType: LeaveRequestType): Observable<LeaveRequest[]> {
-    return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/employees/${employeeId}/types/${requestType}`)
+
+    const httpParams = new HttpParams().append("type", requestType)
+
+    return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/employees/${employeeId}`, requestType ? {params: httpParams} : {})
   }
 }

@@ -14,18 +14,19 @@ import {combineLatest} from "rxjs";
 })
 export class LeaveRequestsComponent {
 
-  leaveRequestTypeControl = new FormControl(LeaveRequestType.ANNUAL);
+  leaveRequestTypeControl = new FormControl('');
 
   leaveRequestTypeControlValue$ = this.leaveRequestTypeControl.valueChanges
     .pipe(
-      startWith(LeaveRequestType.ANNUAL)
+      startWith(null)
   );
 
   leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
 
   leaveRequests$ = combineLatest([this.employeesBsService.employee$, this.leaveRequestTypeControlValue$])
     .pipe(
-      switchMap(([employee, requestType]) => this.leaveRequestService.findByEmployeeIdAndRequestType(employee?.id, requestType))
+      switchMap(([employee, requestType]) =>
+          this.leaveRequestService.findByEmployeeIdAndRequestType(employee?.id, requestType))
     );
 
 
