@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-leave-request-list-filters',
@@ -10,7 +11,13 @@ export class LeaveRequestListFiltersComponent {
 
   @Input() enabled = false;
 
-  constructor() { }
+  form = this.fb.group({
+      dateFrom: [null],
+      dateTo: [null]
+    }
+  )
+
+  constructor(private fb: FormBuilder) { }
 
 
 }
