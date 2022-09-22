@@ -19,6 +19,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 
@@ -45,7 +47,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatSelectModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatSidenavModule,
@@ -59,7 +63,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatSelectModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   entryComponents: [
     EmployeeModalComponent
