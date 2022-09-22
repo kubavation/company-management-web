@@ -17,7 +17,10 @@
       (change)="advancedFiltersChange($event)">
     </mat-slide-toggle>
   </span>
-  <app-leave-request-list-filters [enabled]="advancedFiltersControls.value"></app-leave-request-list-filters>
+  <app-leave-request-list-filters
+    [enabled]="advancedFiltersControls.value"
+    [requestTypes]="leaveRequestTypes$ | async"
+  ></app-leave-request-list-filters>
 </div>
 
 <div class="request-list">
