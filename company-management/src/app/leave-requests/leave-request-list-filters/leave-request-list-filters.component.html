@@ -1,18 +1,18 @@
-<link rel="stylesheet" href="../../shared/base-modal/base-modal.component.scss">
-<div *ngIf="enabled">
+<div *ngIf="enabled" class="leave-request-filters-container">
 
-  <mat-form-field appearance="fill">
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
-      <input matStartDate formControlName="dateFrom" placeholder="From">
-      <input matEndDate formControlName="dateTo" placeholder="To">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+        <input matStartDate formControlName="dateFrom" placeholder="From">
+        <input matEndDate formControlName="dateTo" placeholder="To">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
 
-
-
-  <button>Search</button>
-
+  <div>
+    <button mat-raised-button (click)="search()">Search</button>
+  </div>
 </div>

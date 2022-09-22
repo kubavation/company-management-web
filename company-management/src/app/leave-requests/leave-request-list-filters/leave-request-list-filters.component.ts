@@ -21,4 +21,9 @@ export class LeaveRequestListFiltersComponent {
   }
 
 
+  search(): void {
+    console.log(this.form.value)
+  }
+
+
 }
