@@ -17,11 +17,11 @@ import { LeaveRequestListFiltersComponent } from './leave-request-list-filters/l
     LeaveRequestListComponent,
     LeaveRequestListFiltersComponent
   ],
-    imports: [
-        CommonModule,
-        LeaveRequestsRoutingModule,
-        SharedModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    LeaveRequestsRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
+  ]
 })
 export class LeaveRequestsModule { }

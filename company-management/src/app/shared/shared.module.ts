@@ -14,10 +14,9 @@ import {AbstractBaseModalComponent} from "./abstract-base-modal/abstract-base-mo
 import { SnackbarComponent } from './snackbar/snackbar/snackbar.component';
 import {SnackbarService} from "./snackbar/snackbar.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatOptionModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
-import {MatSliderModule} from "@angular/material/slider";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 
@@ -45,7 +44,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatFormFieldModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatSidenavModule,
@@ -58,7 +58,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     MatFormFieldModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     EmployeeModalComponent

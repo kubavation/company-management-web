@@ -12,12 +12,13 @@ export class LeaveRequestListFiltersComponent {
   @Input() enabled = false;
 
   form = this.fb.group({
-      dateFrom: [null],
-      dateTo: [null]
+        dateFrom: [null],
+        dateTo: [null]
     }
   )
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+  }
 
 
 }
