@@ -1,8 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {KeyValue} from "../../shared/model/key-value";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import {map, startWith, tap} from "rxjs/operators";
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-leave-request-list-filters',
@@ -15,14 +17,24 @@ export class LeaveRequestListFiltersComponent {
   @Input() enabled = false;
   @Input() requestTypes: KeyValue<string>[];
 
-  public filteredRequestTypes: string[] = [];
+  public filteredRequestTypes: KeyValue<string>[] = [];
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  @ViewChild('requestTypeInput') requestTypeInput: ElementRef<HTMLInputElement>;
 
   form = this.fb.group({
         dateFrom: [null],
         dateTo: [null],
-        requestType: [null]
+        requestType: ['']
     }
   )
+
+  filteredTypes$ = this.form.get('requestType').valueChanges
+    .pipe(
+      startWith(null),
+      map(_ => _ instanceof Object ? _.key : _),
+      map((val: string | null) => val ? this._filter(val) : this.requestTypes.slice())
+    )
 
   constructor(private fb: FormBuilder) {
   }
@@ -32,22 +44,43 @@ export class LeaveRequestListFiltersComponent {
     console.log(this.form.value)
   }
 
+
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
     if ((value || '').trim()) {
-      this.filteredRequestTypes.push(value.trim());
+      this.setFirstAvailableValue(value);
     }
 
     if (input) {
       input.value = '';
     }
 
-    this.form.get('requestType').setValue(null);
+    this.form.get('requestType').setValue('');
+    this.form.updateValueAndValidity();
   }
 
-  remove(type: string): void {
+  setFirstAvailableValue(val: string): void {
+
+    let index = 0;
+
+    while(true) {
+      const res = this.requestTypes.filter(type => type.key.toLowerCase().includes(val.toLowerCase()))[index];
+      if (!res) {
+        return;
+      }
+
+      if (!this.filteredRequestTypes.includes(res)) {
+        this.filteredRequestTypes.push(res);
+        return;
+      }
+
+      index++;
+    }
+  }
+
+  remove(type: KeyValue<string>): void {
     const index = this.filteredRequestTypes.indexOf(type);
 
     if (index >= 0) {
@@ -56,9 +89,18 @@ export class LeaveRequestListFiltersComponent {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.filteredRequestTypes.push(event.option.viewValue);
-    //this.fruitInput.nativeElement.value = ''; //todo
+
+    if (!this.filteredRequestTypes.includes(event.option.value)) {
+      this.filteredRequestTypes.push(event.option.value);
+    }
+
+    this.requestTypeInput.nativeElement.value = '';
     this.form.get('requestType').setValue(null);
+  }
+
+  private _filter(val: string): KeyValue<string>[] {
+    const filterValue = val.toLowerCase();
+    return this.requestTypes.filter(({key}) => key.toLowerCase().includes(filterValue));
   }
 
 

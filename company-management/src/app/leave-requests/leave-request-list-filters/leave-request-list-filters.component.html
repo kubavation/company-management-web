@@ -14,24 +14,29 @@
     </div>
 
     <div>
-      <mat-form-field class="example-chip-list">
-        <mat-label>Favorite Fruits</mat-label>
-        <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-form-field class="leave-request-type-chips">
+        <mat-label>Request types</mat-label>
+        <mat-chip-list #chipList aria-label="Request type selection">
           <mat-chip
-            *ngFor="let type of requestTypes"
-            (removed)="remove(type.key)">
+            *ngFor="let type of filteredRequestTypes"
+            (removed)="remove(type)">
             {{type.key}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
           </mat-chip>
           <input
+            #requestTypeInput
             placeholder="Add request type..."
             formControlName="requestType"
             [matAutocomplete]="auto"
             [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let requestType of filteredRequestTypes" [value]="requestType">
-            {{requestType}}
+          <mat-option *ngFor="let requestType of filteredTypes$ | async" [value]="requestType">
+            {{requestType.key}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
