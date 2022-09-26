@@ -15,7 +15,7 @@ export class LeaveRequestListFiltersComponent {
   @Input() enabled = false;
   @Input() requestTypes: KeyValue<string>[];
 
-  private filteredRequestTypes: string[] = [];
+  public filteredRequestTypes: string[] = [];
 
   form = this.fb.group({
         dateFrom: [null],
