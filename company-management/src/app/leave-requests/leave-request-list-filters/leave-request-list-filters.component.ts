@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {AbstractControl, FormBuilder} from "@angular/forms";
 import {KeyValue} from "../../shared/model/key-value";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
@@ -46,6 +46,7 @@ export class LeaveRequestListFiltersComponent {
 
 
   add(event: MatChipInputEvent): void {
+
     const input = event.input;
     const value = event.value;
 
@@ -57,8 +58,7 @@ export class LeaveRequestListFiltersComponent {
       input.value = '';
     }
 
-    this.form.get('requestType').setValue('');
-    this.form.updateValueAndValidity();
+    this.requestTypeControl.setValue(null);
   }
 
   setFirstAvailableValue(val: string): void {
@@ -66,7 +66,9 @@ export class LeaveRequestListFiltersComponent {
     let index = 0;
 
     while(true) {
-      const res = this.requestTypes.filter(type => type.key.toLowerCase().includes(val.toLowerCase()))[index];
+      const res = this.requestTypes
+        .filter(type => type.key.toLowerCase().includes(val.toLowerCase()))[index];
+
       if (!res) {
         return;
       }
@@ -95,13 +97,21 @@ export class LeaveRequestListFiltersComponent {
     }
 
     this.requestTypeInput.nativeElement.value = '';
-    this.form.get('requestType').setValue(null);
+    this.requestTypeControl.setValue(null);
   }
 
   private _filter(val: string): KeyValue<string>[] {
     const filterValue = val.toLowerCase();
-    return this.requestTypes.filter(({key}) => key.toLowerCase().includes(filterValue));
+    return this.requestTypes
+        .filter(({key}) => key.toLowerCase().includes(filterValue));
   }
 
+  allRequestTypesChosen(): boolean {
+    return this.requestTypes.length == this.filteredRequestTypes.length;
+  }
+
+  private get requestTypeControl(): AbstractControl {
+    return this.form.get('requestType');
+  }
 
 }

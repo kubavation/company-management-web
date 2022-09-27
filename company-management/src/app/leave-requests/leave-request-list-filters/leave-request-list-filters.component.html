@@ -27,7 +27,8 @@
           </mat-chip>
           <input
             #requestTypeInput
-            placeholder="Add request type..."
+            [disabled]="allRequestTypesChosen()"
+            [placeholder]="allRequestTypesChosen() ? '' : 'Add request type...'"
             formControlName="requestType"
             [matAutocomplete]="auto"
             [matChipInputFor]="chipList"
