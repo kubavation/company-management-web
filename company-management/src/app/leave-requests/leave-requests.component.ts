@@ -3,7 +3,7 @@ import {LeaveRequestService} from "./service/leave-request.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
 import {filter, startWith, switchMap, tap} from "rxjs/operators";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {combineLatest} from "rxjs";
+import {BehaviorSubject, combineLatest, Subject} from "rxjs";
 
 @Component({
   selector: 'app-leave-requests',
@@ -22,12 +22,19 @@ export class LeaveRequestsComponent {
 
   leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
 
+  private filterObjectSubject$ = new Subject<any>();
+
   leaveRequests$ = combineLatest([
       this.employeesBsService.employee$,
-      this.leaveRequestTypeControlValue$])
+      this.leaveRequestTypeControlValue$,
+      this.filterObjectSubject$])
     .pipe(
-      switchMap(([employee, requestType]) =>
-          this.leaveRequestService.findByEmployeeIdAndRequestType(employee?.id, requestType))
+      switchMap(([employee, requestType, filterObject]) => {
+          console.log('got filterObject');
+          console.log(filterObject);
+          return this.leaveRequestService.findByEmployeeIdAndRequestType(employee?.id, requestType);
+        }
+      )
     );
 
 
@@ -42,8 +49,7 @@ export class LeaveRequestsComponent {
   }
 
   filterLeaveRequests(filterObject: any) : void {
-    console.log('filterObject:')
-    console.log(filterObject)
+    this.filterObjectSubject$.next(filterObject);
   }
 
 }
