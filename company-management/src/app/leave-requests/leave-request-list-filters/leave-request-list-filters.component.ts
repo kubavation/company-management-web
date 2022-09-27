@@ -14,6 +14,8 @@ import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {map, startWith, tap} from "rxjs/operators";
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {LeaveRequestFilter} from "../model/leave-request-filter";
+import {LeaveRequestType} from "../model/leave-request-type";
 
 @Component({
   selector: 'app-leave-request-list-filters',
@@ -26,7 +28,7 @@ export class LeaveRequestListFiltersComponent {
   @Input() enabled = false;
   @Input() requestTypes: KeyValue<string>[];
 
-  @Output() onSearch = new EventEmitter<any>();
+  @Output() onSearch = new EventEmitter<LeaveRequestFilter>();
 
   public filteredRequestTypes: KeyValue<string>[] = [];
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -52,7 +54,7 @@ export class LeaveRequestListFiltersComponent {
 
 
   search() {
-     const obj = {
+     const obj: LeaveRequestFilter = {
       ...this.form.value,
       requestType: this.filteredRequestTypes
     }

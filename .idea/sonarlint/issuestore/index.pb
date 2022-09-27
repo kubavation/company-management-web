@@ -93,8 +93,6 @@ N
 company-management/tslint.json,2\5\25d2238a08bca3974610972c4eb438753dea1e9d
 P
  company-management/tsconfig.json,2\d\2dab79b27132ce17a81288c246f37a8c56040735
-u
-Ecompany-management/src/app/leave-requests/model/leave-request-type.ts,f\5\f5c8f1f8412871970875c0d24e227e75f210a823
 z
 Jcompany-management/src/app/leave-requests/service/leave-request.service.ts,1\e\1efe8090c28f29b0297a3b18b8b59a354379b93e
 Œ
@@ -105,10 +103,6 @@ Jcompany-management/src/app/leave-requests/service/leave-request.service.ts,1\e
 Ncompany-management/src/app/shared/snackbar/snackbar/snackbar.component.spec.ts,7\7\77f42424e079c53bd11975dc3fc294b76cd94bf3
 y
 Icompany-management/src/app/shared/snackbar/snackbar/snackbar.component.ts,e\1\e195af084bc67a82d45a76667d7e4b3b8839fc75
-z
-Jcompany-management/src/app/leave-requests/leave-requests.component.spec.ts,5\1\516105892ac104f6174a5a20c56b6f14a2eaff68
-w
-Gcompany-management/src/app/leave-requests/leave-requests.component.scss,5\d\5d0f2e8f8b6f181b92ae8ed5cfc6dcf0c75ce495
 O
 company-management/angular.json,5\5\55d9e11d6ab64449cd9df9d6ea0472369da040d2
 O
