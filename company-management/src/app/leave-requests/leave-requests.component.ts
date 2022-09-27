@@ -41,5 +41,9 @@ export class LeaveRequestsComponent {
     console.log(checked)
   }
 
+  filterLeaveRequests(filterObject: any) : void {
+    console.log('filterObject:')
+    console.log(filterObject)
+  }
 
 }

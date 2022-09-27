@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {AbstractControl, FormBuilder} from "@angular/forms";
 import {KeyValue} from "../../shared/model/key-value";
 import {MatChipInputEvent} from "@angular/material/chips";
@@ -16,6 +25,8 @@ export class LeaveRequestListFiltersComponent {
 
   @Input() enabled = false;
   @Input() requestTypes: KeyValue<string>[];
+
+  @Output() onSearch = new EventEmitter<any>();
 
   public filteredRequestTypes: KeyValue<string>[] = [];
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -40,8 +51,13 @@ export class LeaveRequestListFiltersComponent {
   }
 
 
-  search(): void {
-    console.log(this.form.value)
+  search() {
+     const obj = {
+      ...this.form.value,
+      requestType: this.filteredRequestTypes
+    }
+
+    this.onSearch.next(obj);
   }
 
 
