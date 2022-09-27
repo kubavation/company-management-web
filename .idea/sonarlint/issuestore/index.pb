@@ -25,8 +25,6 @@ d
 4company-management/src/app/shared/model/key-value.ts,b\5\b5a5948140fe2c43af913f0027c8ca4aae1364d7
 v
 Fcompany-management/src/app/shared/base-modal/base-modal.component.html,7\7\772a02f9478c4bceae3819c582d981c3843a9757
-p
-@company-management/src/app/leave-requests/model/leave-request.ts,1\5\15fd5d38d75bd8a3080c8d96ddcb5e2e14a39fce
 `
 0company-management/src/app/app-routing.module.ts,9\8\98aad9144e00519efbfc15d825e0c8bfffdefc6a
 ]
@@ -95,10 +93,6 @@ P
  company-management/tsconfig.json,2\d\2dab79b27132ce17a81288c246f37a8c56040735
 z
 Jcompany-management/src/app/leave-requests/service/leave-request.service.ts,1\e\1efe8090c28f29b0297a3b18b8b59a354379b93e
-Œ
-\company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.ts,e\c\ec8fc54ed11bf64b629f25297e0cfcbb6945f25d
-Ž
-^company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.html,3\8\38716784276fa5e3c398d13da69d2a5674650773
 ~
 Ncompany-management/src/app/shared/snackbar/snackbar/snackbar.component.spec.ts,7\7\77f42424e079c53bd11975dc3fc294b76cd94bf3
 y
