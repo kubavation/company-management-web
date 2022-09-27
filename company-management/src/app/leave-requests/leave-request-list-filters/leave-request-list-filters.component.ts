@@ -36,7 +36,7 @@ export class LeaveRequestListFiltersComponent {
   form = this.fb.group({
         dateFrom: [null],
         dateTo: [null],
-        requestType: ['']
+        requestType: [null]
     }
   )
 
@@ -58,6 +58,11 @@ export class LeaveRequestListFiltersComponent {
     }
 
     this.onSearch.next(obj);
+  }
+
+  clearFilters() {
+    this.form.reset();
+    this.filteredRequestTypes = [];
   }
 
 

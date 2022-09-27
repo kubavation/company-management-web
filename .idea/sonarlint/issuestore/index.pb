@@ -55,8 +55,6 @@ l
 <company-management/src/app/shared/employee/model/employee.ts,2\5\252d93a43b5b89c5a4292f0946e791570172849f
 p
 @company-management/src/app/shared/employee/employee.component.ts,e\4\e423130c8619469e5dec5cf3aa3111ec017295f5
-y
-Icompany-management/src/app/shared/employee/service/employee-bs.service.ts,8\b\8b13779d637b56511eda6d8ddd3fa0cac992aae9
 …
 Ucompany-management/src/app/shared/employee/employee-table/employee-table.component.ts,0\e\0ec3b3b9dccc67a3aef4fa2746148b851634de69
 r
