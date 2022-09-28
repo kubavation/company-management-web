@@ -22,6 +22,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 
@@ -34,6 +36,7 @@ import {MatIconModule} from "@angular/material/icon";
     EmployeeComponent,
     EmployeeModalComponent,
     SnackbarComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +54,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatNativeDateModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatSidenavModule,
@@ -68,7 +72,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatNativeDateModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     EmployeeModalComponent
