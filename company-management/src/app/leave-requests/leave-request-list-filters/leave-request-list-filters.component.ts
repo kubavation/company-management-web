@@ -30,7 +30,7 @@ export class LeaveRequestListFiltersComponent {
 
   @Input() set advancedFiltersEnabled(filtersEnabled: boolean) {
     if (!filtersEnabled) {
-      this.form.reset();
+      this.clearFilters();
     }
   }
 
