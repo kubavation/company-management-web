@@ -28,6 +28,12 @@ export class LeaveRequestListFiltersComponent {
   @Input() enabled = false;
   @Input() requestTypes: KeyValue<string>[];
 
+  @Input() set advancedFiltersEnabled(filtersEnabled: boolean) {
+    if (!filtersEnabled) {
+      this.form.reset();
+    }
+  }
+
   @Output() onSearch = new EventEmitter<LeaveRequestFilter>();
 
   public filteredRequestTypes: KeyValue<string>[] = [];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {LeaveRequestService} from "./service/leave-request.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
 import {filter, startWith, switchMap, tap} from "rxjs/operators";
@@ -45,7 +45,10 @@ export class LeaveRequestsComponent {
   }
 
   advancedFiltersChange({checked}): void {
-    console.log(checked)
+    this.leaveRequestTypeControl.setValue('');
+    if (!checked) {
+      this.filterObjectSubject$.next(null);
+    }
   }
 
   filterLeaveRequests(filterObject: LeaveRequestFilter) : void {
