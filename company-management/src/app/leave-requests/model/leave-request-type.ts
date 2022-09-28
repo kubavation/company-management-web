@@ -1,4 +1,4 @@
 export enum LeaveRequestType {
-  ANNUAL ='AL',
-  CHILDCARE ='CL'
+  AL ='ANNUAL',
+  CL ='CHILDCARE'
 }

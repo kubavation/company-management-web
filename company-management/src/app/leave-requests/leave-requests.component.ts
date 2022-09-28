@@ -31,8 +31,9 @@ export class LeaveRequestsComponent {
       this.filterObjectSubject$])
     .pipe(
       switchMap(([employee, requestType, filterObject]) => {
-          console.log('got filterObject');
-          console.log(filterObject);
+          if (filterObject) {
+            return this.leaveRequestService.findByFilters(filterObject);
+          }
           return this.leaveRequestService.findByEmployeeIdAndRequestType(employee?.id, requestType);
         }
       )
@@ -41,8 +42,6 @@ export class LeaveRequestsComponent {
 
   constructor(private leaveRequestService: LeaveRequestService,
               private employeesBsService: EmployeeBsService) {
-
-
   }
 
   advancedFiltersChange({checked}): void {
@@ -50,7 +49,13 @@ export class LeaveRequestsComponent {
   }
 
   filterLeaveRequests(filterObject: LeaveRequestFilter) : void {
-    this.filterObjectSubject$.next(filterObject);
+
+    const filterObjWithEmployeeId = {
+      ...filterObject,
+      employeeId: this.employeesBsService.getValue().id
+    }
+
+    this.filterObjectSubject$.next(filterObjWithEmployeeId);
   }
 
 }
