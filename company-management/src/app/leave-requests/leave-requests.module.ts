@@ -8,6 +8,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import { LeaveRequestListFiltersComponent } from './leave-request-list-filters/leave-request-list-filters.component';
+import { NewLeaveRequestComponent } from './new-leave-request/new-leave-request.component';
 
 
 
@@ -15,7 +16,8 @@ import { LeaveRequestListFiltersComponent } from './leave-request-list-filters/l
   declarations: [
     LeaveRequestsComponent,
     LeaveRequestListComponent,
-    LeaveRequestListFiltersComponent
+    LeaveRequestListFiltersComponent,
+    NewLeaveRequestComponent
   ],
   imports: [
     CommonModule,
