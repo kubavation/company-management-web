@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
   selector: 'app-new-leave-request',
   templateUrl: './new-leave-request.component.html',
-  styleUrls: ['./new-leave-request.component.scss']
+  styleUrls: ['./new-leave-request.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewLeaveRequestComponent implements OnInit {
+export class NewLeaveRequestComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
 }

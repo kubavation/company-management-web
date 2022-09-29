@@ -9,6 +9,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import { LeaveRequestListFiltersComponent } from './leave-request-list-filters/leave-request-list-filters.component';
 import { NewLeaveRequestComponent } from './new-leave-request/new-leave-request.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -19,11 +20,12 @@ import { NewLeaveRequestComponent } from './new-leave-request/new-leave-request.
     LeaveRequestListFiltersComponent,
     NewLeaveRequestComponent
   ],
-  imports: [
-    CommonModule,
-    LeaveRequestsRoutingModule,
-    SharedModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        LeaveRequestsRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        MatCardModule
+    ]
 })
 export class LeaveRequestsModule { }
