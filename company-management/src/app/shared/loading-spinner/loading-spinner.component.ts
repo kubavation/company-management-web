@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoaderService} from "../service/loader.service";
 
 @Component({
   selector: 'app-loading-spinner',
@@ -7,4 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingSpinnerComponent {
 
+  isLoading$ = this.loaderService.isLoading$;
+
+  constructor(private loaderService: LoaderService) {
+
+  }
+
 }
+

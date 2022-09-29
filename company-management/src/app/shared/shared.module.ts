@@ -73,7 +73,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MatChipsModule,
     MatAutocompleteModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    LoadingSpinnerComponent
   ],
   entryComponents: [
     EmployeeModalComponent
