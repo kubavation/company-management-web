@@ -72,6 +72,7 @@ export class LeaveRequestListFiltersComponent {
   clearFilters() {
     this.form.reset();
     this.filteredRequestTypes = [];
+    this.form.markAsUntouched();
   }
 
 
@@ -126,8 +127,9 @@ export class LeaveRequestListFiltersComponent {
       this.filteredRequestTypes.push(event.option.value);
     }
 
-    this.requestTypeInput.nativeElement.value = '';
+    this.requestTypeInput.nativeElement.value = null;
     this.requestTypeControl.setValue(null);
+    this.requestTypeControl.updateValueAndValidity();
   }
 
   private _filter(val: string): KeyValue<string>[] {
