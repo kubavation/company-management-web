@@ -11,15 +11,18 @@ import {FormBuilder, Validators} from "@angular/forms";
 export class NewLeaveRequestComponent {
 
   @Input() leaveRequestTypes: KeyValue<string>[];
-
   @Output() cancel = new EventEmitter<void>();
 
   form = this.fb.group({
-    leaveRequestType: [null, Validators.required]
+    leaveRequestType: [null, Validators.required],
+    dateFrom: [],
+    dateTo: []
   });
 
   constructor(private fb: FormBuilder,
-              private cdr: ChangeDetectorRef) { }
+              private cdr: ChangeDetectorRef) {
+    this.form.valueChanges.subscribe(_=> console.log(_))
+  }
 
 
   onSave(): void {

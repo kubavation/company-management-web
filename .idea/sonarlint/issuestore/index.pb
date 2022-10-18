@@ -91,8 +91,6 @@ Ucompany-management/src/app/shared/employee/employee-modal/employee-modal.compon
 Kcompany-management/src/app/shared/snackbar/snackbar/snackbar.component.html,7\6\76d137175036efbcd4b65da66dfc4fdaf31fc330
 ž
 ncompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.scss,2\0\20ac4f6f954ffa6600fef76b819d319508e0d13f
-Ž
-^company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.html,3\8\38716784276fa5e3c398d13da69d2a5674650773
 Q
 !company-management/src/index.html,9\e\9e99d1280476db8730b16cf865a8797a83940d9e
 p
@@ -101,15 +99,9 @@ u
 Ecompany-management/src/app/leave-requests/model/leave-request-type.ts,f\5\f5c8f1f8412871970875c0d24e227e75f210a823
 w
 Gcompany-management/src/app/leave-requests/model/leave-request-filter.ts,3\4\345b7123b0e489aa6636ad9ea466a705425eaa29
-]
--company-management/src/app/app.component.html,1\1\11166c9e08cd9530c5c2162ace33ef888b243155
 €
 Pcompany-management/src/app/shared/loading-spinner/loading-spinner.component.html,c\8\c8692860a7bb7dcb4c4ceb41f63a69f505f381ed
 ¡
 qcompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.spec.ts,6\6\6697a9e635debee974f1d56676072195aff9670c
-Œ
-\company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.ts,e\c\ec8fc54ed11bf64b629f25297e0cfcbb6945f25d
 [
 +company-management/src/app/app.component.ts,3\4\34d6b749e0621d6f12d2098264bc352ffacb2891
-ž
-ncompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.html,c\e\ce5cc1b08b41a3014554b8c9128cfb9412d3be6d
