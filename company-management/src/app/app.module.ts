@@ -22,6 +22,7 @@ import { ConfirmationModalProvider } from './shared/confirmation-modal/confirmat
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 import {LoadingInterceptor} from "./shared/interceptor/loading.interceptor";
 import {SharedModule} from "./shared/shared.module";
+import {CorsInterceptor} from "./shared/interceptor/cors.interceptor";
 
 @NgModule({
   declarations: [
@@ -63,6 +64,11 @@ import {SharedModule} from "./shared/shared.module";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
       multi: true,
     },
 

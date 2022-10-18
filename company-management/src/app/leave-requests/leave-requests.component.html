@@ -1,4 +1,4 @@
-<form>
+<form> TODODODOD
   <mat-form-field appearance="outline">
     <mat-label>Choose request type</mat-label>
     <mat-select [formControl]="leaveRequestTypeControl" [disabled]="advancedFiltersControls.value">
@@ -8,24 +8,27 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+
+  <div>
+    <span>Advanced filters
+      <mat-slide-toggle
+        [formControl]="advancedFiltersControls"
+        (change)="advancedFiltersChange($event)">
+      </mat-slide-toggle>
+    </span>
+    <app-leave-request-list-filters
+      [advancedFiltersEnabled] = "advancedFiltersControls.value"
+      [enabled]="advancedFiltersControls.value"
+      [requestTypes]="leaveRequestTypes$ | async"
+      (onSearch)="filterLeaveRequests($event)"
+    ></app-leave-request-list-filters>
+  </div>
+
 </form>
 
-<div>
-  <span>Advanced filters
-    <mat-slide-toggle
-      [formControl]="advancedFiltersControls"
-      (change)="advancedFiltersChange($event)">
-    </mat-slide-toggle>
-  </span>
-  <app-leave-request-list-filters
-    [advancedFiltersEnabled] = "advancedFiltersControls.value"
-    [enabled]="advancedFiltersControls.value"
-    [requestTypes]="leaveRequestTypes$ | async"
-    (onSearch)="filterLeaveRequests($event)"
-  ></app-leave-request-list-filters>
-</div>
-
 <div class="request-list">
+  <button mat-raised-button (click)="onCreate()">Create</button>
   <app-leave-request-list
     [leaveRequests]="leaveRequests$ | async">
   </app-leave-request-list>

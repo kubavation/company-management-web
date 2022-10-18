@@ -61,4 +61,8 @@ export class LeaveRequestsComponent {
     this.filterObjectSubject$.next(filterObjWithEmployeeId);
   }
 
+  onCreate(): void {
+    console.log('on create')
+  }
+
 }
