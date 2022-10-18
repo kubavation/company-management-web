@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input} from '@angular/core';
+import {KeyValue} from "../../shared/model/key-value";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-new-leave-request',
@@ -8,7 +10,14 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 })
 export class NewLeaveRequestComponent {
 
-  constructor() { }
+  @Input() leaveRequestTypes: KeyValue<string>[];
+
+  form = this.fb.group({
+    leaveRequestType: [null, Validators.required]
+  });
+
+  constructor(private fb: FormBuilder,
+              private cdr: ChangeDetectorRef) { }
 
 
 

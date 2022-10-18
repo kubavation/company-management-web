@@ -34,6 +34,8 @@
   </app-leave-request-list>
 </div>
 
-<div class="new-leave-request-container">
-  <app-new-leave-request></app-new-leave-request>
+<div class="new-leave-request-container" *ngIf="createMode">
+  <app-new-leave-request
+    [leaveRequestTypes]="leaveRequestTypes$ | async"
+  ></app-new-leave-request>
 </div>

@@ -23,7 +23,6 @@ export class LeaveRequestsComponent {
   );
 
   leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
-
   private filterObjectSubject$ = new BehaviorSubject<LeaveRequestFilter>(null);
 
   leaveRequests$ = combineLatest([
@@ -40,6 +39,7 @@ export class LeaveRequestsComponent {
       )
     );
 
+  createMode = false;
 
   constructor(private leaveRequestService: LeaveRequestService,
               private employeesBsService: EmployeeBsService,
@@ -64,7 +64,7 @@ export class LeaveRequestsComponent {
   }
 
   onCreate(): void {
-    this.router.navigateByUrl('leave-requests/new-leave-request');
+    this.createMode = true;
   }
 
 }
