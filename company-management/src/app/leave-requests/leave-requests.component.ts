@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {LeaveRequestService} from "./service/leave-request.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
 import {filter, startWith, switchMap, tap} from "rxjs/operators";
@@ -13,6 +13,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./leave-requests.component.scss']
 })
 export class LeaveRequestsComponent {
+
+  @ViewChild('createRequestContainer') createRequestContainer: ElementRef;
 
   leaveRequestTypeControl = new FormControl('');
   advancedFiltersControls = new FormControl(false);
@@ -65,6 +67,10 @@ export class LeaveRequestsComponent {
 
   onCreate(): void {
     this.createMode = true;
+    this.createRequestContainer.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end'
+    });
   }
 
 }
