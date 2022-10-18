@@ -27,7 +27,7 @@
 
 </form>
 
-<div class="request-list">
+<div #requestList class="request-list">
   <button mat-raised-button (click)="onCreate()">Create</button>
   <app-leave-request-list
     [leaveRequests]="leaveRequests$ | async">
@@ -38,6 +38,7 @@
   <div *ngIf="createMode">
     <app-new-leave-request
       [leaveRequestTypes]="leaveRequestTypes$ | async"
+      (cancel)="onCreationCancel()"
     ></app-new-leave-request>
   </div>
 </div>

@@ -15,6 +15,7 @@ import {Router} from "@angular/router";
 export class LeaveRequestsComponent {
 
   @ViewChild('createRequestContainer') createRequestContainer: ElementRef;
+  @ViewChild('requestList') requestList: ElementRef;
 
   leaveRequestTypeControl = new FormControl('');
   advancedFiltersControls = new FormControl(false);
@@ -70,6 +71,14 @@ export class LeaveRequestsComponent {
     this.createRequestContainer.nativeElement.scrollIntoView({
       behavior: 'smooth',
       block: 'end'
+    });
+  }
+
+  onCreationCancel(): void {
+    this.createMode = false;
+    this.requestList.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
   }
 
