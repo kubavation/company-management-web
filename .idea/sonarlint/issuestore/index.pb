@@ -21,8 +21,6 @@ d
 4company-management/src/app/shared/model/key-value.ts,b\5\b5a5948140fe2c43af913f0027c8ca4aae1364d7
 v
 Fcompany-management/src/app/shared/base-modal/base-modal.component.html,7\7\772a02f9478c4bceae3819c582d981c3843a9757
-`
-0company-management/src/app/app-routing.module.ts,9\8\98aad9144e00519efbfc15d825e0c8bfffdefc6a
 s
 Ccompany-management/src/app/shared/service/modal-provider.service.ts,2\2\227aa026658d949e406183743cb7160dc4b722f1
 t

@@ -5,6 +5,7 @@ import {filter, startWith, switchMap, tap} from "rxjs/operators";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {BehaviorSubject, combineLatest, Subject} from "rxjs";
 import {LeaveRequestFilter} from "./model/leave-request-filter";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-leave-requests',
@@ -41,7 +42,8 @@ export class LeaveRequestsComponent {
 
 
   constructor(private leaveRequestService: LeaveRequestService,
-              private employeesBsService: EmployeeBsService) {
+              private employeesBsService: EmployeeBsService,
+              private router: Router) {
   }
 
   advancedFiltersChange({checked}): void {
@@ -62,7 +64,7 @@ export class LeaveRequestsComponent {
   }
 
   onCreate(): void {
-    console.log('on create')
+    this.router.navigateByUrl('leave-requests/new-leave-request');
   }
 
 }
