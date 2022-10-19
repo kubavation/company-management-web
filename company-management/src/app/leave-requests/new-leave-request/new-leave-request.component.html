@@ -27,6 +27,11 @@
       </mat-form-field>
 
 
+      <mat-form-field  appearance="fill">
+        <mat-label>Number of days</mat-label>
+        <input matInput disabled [value]="days$ | async" />
+      </mat-form-field>
+
 
       <div class="new-leave-request-buttons">
         <button mat-raised-button (click)="onCancel()">Cancel</button>
