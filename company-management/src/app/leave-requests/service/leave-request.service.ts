@@ -31,4 +31,9 @@ export class LeaveRequestService {
   public findStandInEmployees(employeeId: number): Observable<Employee[]> {
     return this.http.get<Employee[]>(`${Env.serverUrl}/leave-requests/${employeeId}/standin-employees`);
   }
+
+  public create(request: LeaveRequest): Observable<void> {
+    return this.http.post<void>(`${Env.serverUrl}/leave-requests`, request);
+  }
+  
 }

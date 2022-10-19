@@ -56,9 +56,7 @@ export class NewLeaveRequestComponent {
 
   constructor(private fb: FormBuilder,
               private employeeBsService: EmployeeBsService,
-              private leaveRequestService: LeaveRequestService,
-              private cdr: ChangeDetectorRef) {
-    this.form.valueChanges.subscribe(_=> console.log(_))
+              private leaveRequestService: LeaveRequestService) {
   }
 
 
