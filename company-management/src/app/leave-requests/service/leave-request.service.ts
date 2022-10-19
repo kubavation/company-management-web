@@ -7,6 +7,7 @@ import {KeyValue} from "../../shared/model/key-value";
 import {LeaveRequest} from "../model/leave-request";
 import {LeaveRequestType} from "../model/leave-request-type";
 import {LeaveRequestFilter} from "../model/leave-request-filter";
+import {CreateLeaveRequest} from "../model/create-leave-request";
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,8 @@ export class LeaveRequestService {
     return this.http.get<Employee[]>(`${Env.serverUrl}/leave-requests/${employeeId}/standin-employees`);
   }
 
-  public create(request: LeaveRequest): Observable<void> {
+  public create(request: CreateLeaveRequest): Observable<void> {
     return this.http.post<void>(`${Env.serverUrl}/leave-requests`, request);
   }
-  
+
 }

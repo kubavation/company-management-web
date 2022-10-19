@@ -8,7 +8,7 @@
 
       <mat-form-field appearance="outline" >
         <mat-label>Choose request type</mat-label>
-        <mat-select  formControlName="leaveRequestType">
+        <mat-select  formControlName="type">
           <mat-option *ngFor="let leaveRequestType of leaveRequestTypes" [value]="leaveRequestType.value">
             {{leaveRequestType.key}}
           </mat-option>

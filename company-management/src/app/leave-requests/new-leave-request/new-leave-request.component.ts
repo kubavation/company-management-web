@@ -5,6 +5,8 @@ import {combineLatest, Observable, of} from "rxjs";
 import {catchError, map, startWith, switchMap, tap} from "rxjs/operators";
 import {EmployeeBsService} from "../../shared/employee/service/employee-bs.service";
 import {LeaveRequestService} from "../service/leave-request.service";
+import {LeaveRequest} from "../model/leave-request";
+import {CreateLeaveRequest} from "../model/create-leave-request";
 
 @Component({
   selector: 'app-new-leave-request',
@@ -18,10 +20,9 @@ export class NewLeaveRequestComponent {
   @Output() cancel = new EventEmitter<void>();
 
   form = this.fb.group({
-    leaveRequestType: [null, Validators.required],
+    type: [null, Validators.required],
     dateFrom: [],
     dateTo: [],
-    days: [0, {value: null, disabled: true}],
     standInEmployee: [null, Validators.required]
   });
 
@@ -61,7 +62,17 @@ export class NewLeaveRequestComponent {
 
 
   onSave(): void {
-    console.log('on save todo');
+
+    const leaveRequest: CreateLeaveRequest = {
+      ...this.form.value,
+      employeeId: this.employeeBsService.getValue().id,
+      standInEmployeeId: this.standInEmployeeControl.value
+    };
+
+    this.leaveRequestService.create(leaveRequest)
+      .subscribe(_ => {
+        console.log(_)
+      })
   }
 
   onCancel(): void {
@@ -75,6 +86,10 @@ export class NewLeaveRequestComponent {
 
   private get dateToControl(): AbstractControl {
     return this.form.get('dateTo');
+  }
+
+  private get standInEmployeeControl(): AbstractControl {
+    return this.form.get('standInEmployee');
   }
 
   private daysBetweenDates(d1, d2) {
