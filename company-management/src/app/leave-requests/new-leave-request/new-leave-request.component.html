@@ -32,6 +32,14 @@
         <input matInput disabled [value]="days$ | async" />
       </mat-form-field>
 
+      <mat-form-field appearance="outline" >
+        <mat-label>Choose stand-in employee</mat-label>
+        <mat-select  formControlName="standInEmployee">
+          <mat-option *ngFor="let employee of standInEmployees$ | async" [value]="employee.id">
+            {{employee.lastName + ' ' + employee.firstName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div class="new-leave-request-buttons">
         <button mat-raised-button (click)="onCancel()">Cancel</button>

@@ -2,7 +2,9 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inp
 import {KeyValue} from "../../shared/model/key-value";
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {combineLatest, Observable, of} from "rxjs";
-import {catchError, map, startWith, switchMap} from "rxjs/operators";
+import {catchError, map, startWith, switchMap, tap} from "rxjs/operators";
+import {EmployeeBsService} from "../../shared/employee/service/employee-bs.service";
+import {LeaveRequestService} from "../service/leave-request.service";
 
 @Component({
   selector: 'app-new-leave-request',
@@ -19,7 +21,8 @@ export class NewLeaveRequestComponent {
     leaveRequestType: [null, Validators.required],
     dateFrom: [],
     dateTo: [],
-    days: [0, {value: null, disabled: true}]
+    days: [0, {value: null, disabled: true}],
+    standInEmployee: [null, Validators.required]
   });
 
   days$ = combineLatest(
@@ -33,15 +36,27 @@ export class NewLeaveRequestComponent {
             return of(this.daysBetweenDates(dateFrom, dateTo))
               .pipe(
                 catchError(_ => {
-                  return of("0")
+                  return of(null)
                 })
               );
           }
-          return of("0");
+          return of(null);
         })
   );
 
+  standInEmployees$ = combineLatest(this.employeeBsService.employee$, this.days$)
+    .pipe(
+      switchMap(([employee, days]) => {
+          if (!!days) {
+            return this.leaveRequestService.findStandInEmployees(employee.id);
+          }
+          return of([]);
+      })
+    );
+
   constructor(private fb: FormBuilder,
+              private employeeBsService: EmployeeBsService,
+              private leaveRequestService: LeaveRequestService,
               private cdr: ChangeDetectorRef) {
     this.form.valueChanges.subscribe(_=> console.log(_))
   }

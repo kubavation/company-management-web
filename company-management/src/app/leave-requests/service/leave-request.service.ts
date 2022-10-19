@@ -27,4 +27,8 @@ export class LeaveRequestService {
   public findByFilters(filters: LeaveRequestFilter): Observable<LeaveRequest[]> {
     return this.http.post<LeaveRequest[]>(`${Env.serverUrl}/leave-requests`, filters)
   }
+
+  public findStandInEmployees(employeeId: number): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${Env.serverUrl}/leave-requests/${employeeId}/standin-employees`);
+  }
 }
