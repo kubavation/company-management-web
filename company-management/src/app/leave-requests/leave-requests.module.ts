@@ -11,6 +11,7 @@ import { LeaveRequestListFiltersComponent } from './leave-request-list-filters/l
 import { NewLeaveRequestComponent } from './new-leave-request/new-leave-request.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import { LeaveRequestTypeDescPipe } from './pipe/leave-request-type-desc.pipe';
 
 
 
@@ -19,7 +20,8 @@ import {MatInputModule} from "@angular/material/input";
     LeaveRequestsComponent,
     LeaveRequestListComponent,
     LeaveRequestListFiltersComponent,
-    NewLeaveRequestComponent
+    NewLeaveRequestComponent,
+    LeaveRequestTypeDescPipe
   ],
     imports: [
         CommonModule,
