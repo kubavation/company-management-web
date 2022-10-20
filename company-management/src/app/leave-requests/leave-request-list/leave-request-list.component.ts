@@ -13,7 +13,7 @@ export class LeaveRequestListComponent {
 
   selected: LeaveRequest | undefined;
 
-  public readonly DATA_TABLE_COLUMNS = ['type', 'date', 'days', 'hours'];
+  public readonly DATA_TABLE_COLUMNS = ['type', 'dateFrom', 'dateTo', 'days'];
 
   constructor() { }
 
