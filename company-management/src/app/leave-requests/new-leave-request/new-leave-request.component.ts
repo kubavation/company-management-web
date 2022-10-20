@@ -93,6 +93,6 @@ export class NewLeaveRequestComponent {
   }
 
   private daysBetweenDates(d1, d2) {
-    return (Math.ceil(Math.abs(d1 - d2) / (1000 * 60 * 60 * 24))).toString();
+    return (Math.ceil(Math.abs(d1 - d2) / (1000 * 60 * 60 * 24)) + 1).toString();
   }
 }
