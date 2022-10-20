@@ -7,6 +7,8 @@ import {EmployeeBsService} from "../../shared/employee/service/employee-bs.servi
 import {LeaveRequestService} from "../service/leave-request.service";
 import {LeaveRequest} from "../model/leave-request";
 import {CreateLeaveRequest} from "../model/create-leave-request";
+import {ModalProviderService} from "../../shared/service/modal-provider.service";
+import {SnackbarService} from "../../shared/snackbar/snackbar.service";
 
 @Component({
   selector: 'app-new-leave-request',
@@ -58,7 +60,8 @@ export class NewLeaveRequestComponent {
 
   constructor(private fb: FormBuilder,
               private employeeBsService: EmployeeBsService,
-              private leaveRequestService: LeaveRequestService) {
+              private leaveRequestService: LeaveRequestService,
+              private snackbarService: SnackbarService) {
   }
 
 
@@ -72,7 +75,7 @@ export class NewLeaveRequestComponent {
 
     this.leaveRequestService.create(leaveRequest)
       .subscribe(_ => {
-        console.log(_)
+        this.snackbarService.success('Request was successfully saved')
         this.save.next();
       }, e => console.log(e))
   }
