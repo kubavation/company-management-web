@@ -24,6 +24,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatIconModule} from "@angular/material/icon";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -55,7 +56,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MatChipsModule,
     MatAutocompleteModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   exports: [
     MatSidenavModule,
@@ -74,7 +76,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     MatAutocompleteModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    MatPaginatorModule
   ],
   entryComponents: [
     EmployeeModalComponent

@@ -12,6 +12,7 @@ import { NewLeaveRequestComponent } from './new-leave-request/new-leave-request.
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import { LeaveRequestTypeDescPipe } from './pipe/leave-request-type-desc.pipe';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -23,13 +24,13 @@ import { LeaveRequestTypeDescPipe } from './pipe/leave-request-type-desc.pipe';
     NewLeaveRequestComponent,
     LeaveRequestTypeDescPipe
   ],
-    imports: [
-        CommonModule,
-        LeaveRequestsRoutingModule,
-        SharedModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatInputModule
-    ]
+  imports: [
+    CommonModule,
+    LeaveRequestsRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule
+  ]
 })
 export class LeaveRequestsModule { }

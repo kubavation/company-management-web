@@ -1,6 +1,6 @@
 <div class="mat-elevation-z20">
 
-  <table mat-table [dataSource]="leaveRequests" class="mat-elevation-z8" style="width: 100%">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
 
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef> Type </th>
@@ -35,6 +35,6 @@
 
   </table>
 
-
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of leave requests"></mat-paginator>
 </div>
 
