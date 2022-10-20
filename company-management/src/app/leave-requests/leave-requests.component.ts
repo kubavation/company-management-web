@@ -70,26 +70,28 @@ export class LeaveRequestsComponent {
 
   onCreate(): void {
     this.createMode = true;
-    this.createRequestContainer.nativeElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'end'
-    });
+    this.scrollIntoView(this.createRequestContainer, 'end');
   }
 
   onCreationCancel(): void {
     this.createMode = false;
-    this.requestList.nativeElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    this.scrollIntoView(this.requestList);
   }
 
   onSuccessfulSave(): void {
     this.refreshLeaveRequestsSubject$.next();
     this.createMode = false;
-    this.requestList.nativeElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    this.scrollIntoView(this.requestList);
   }
+
+
+  private scrollIntoView(el: ElementRef, blockOption = 'start'): void {
+    setTimeout(() => {
+      el.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: blockOption,
+      });
+    }, 0)
+  }
+
 }
