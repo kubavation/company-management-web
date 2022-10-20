@@ -39,6 +39,7 @@
     <app-new-leave-request
       [leaveRequestTypes]="leaveRequestTypes$ | async"
       (cancel)="onCreationCancel()"
+      (save)="onSuccessfulSave()"
     ></app-new-leave-request>
   </div>
 </div>

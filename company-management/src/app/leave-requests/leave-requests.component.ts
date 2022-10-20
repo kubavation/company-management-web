@@ -27,13 +27,15 @@ export class LeaveRequestsComponent {
 
   leaveRequestTypes$ = this.leaveRequestService.findLeaveRequestTypes();
   private filterObjectSubject$ = new BehaviorSubject<LeaveRequestFilter>(null);
+  private refreshLeaveRequestsSubject$ = new BehaviorSubject<void>(null);
 
   leaveRequests$ = combineLatest([
       this.employeesBsService.employee$,
       this.leaveRequestTypeControlValue$,
-      this.filterObjectSubject$])
+      this.filterObjectSubject$,
+      this.refreshLeaveRequestsSubject$])
     .pipe(
-      switchMap(([employee, requestType, filterObject]) => {
+      switchMap(([employee, requestType, filterObject, _]) => {
           if (filterObject) {
             return this.leaveRequestService.findByFilters(filterObject);
           }
@@ -82,4 +84,12 @@ export class LeaveRequestsComponent {
     });
   }
 
+  onSuccessfulSave(): void {
+    this.refreshLeaveRequestsSubject$.next();
+    this.createMode = false;
+    this.requestList.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
 }

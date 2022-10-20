@@ -18,6 +18,7 @@ export class NewLeaveRequestComponent {
 
   @Input() leaveRequestTypes: KeyValue<string>[];
   @Output() cancel = new EventEmitter<void>();
+  @Output() save = new EventEmitter<void>();
 
   form = this.fb.group({
     type: [null, Validators.required],
@@ -72,7 +73,8 @@ export class NewLeaveRequestComponent {
     this.leaveRequestService.create(leaveRequest)
       .subscribe(_ => {
         console.log(_)
-      })
+        this.save.next();
+      }, e => console.log(e))
   }
 
   onCancel(): void {
