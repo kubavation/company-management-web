@@ -79,6 +79,11 @@ export class LeaveRequestsComponent {
     this.scrollIntoView(this.createRequestContainer, 'end');
   }
 
+  onEdit(): void {
+    this.createMode = true;
+    this.scrollIntoView(this.createRequestContainer, 'end');
+  }
+
   onDelete(): void {
     this.confirmationModalProvided.open()
       .subscribe(res => console.log(res))

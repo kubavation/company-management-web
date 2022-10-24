@@ -19,6 +19,18 @@ import {SnackbarService} from "../../shared/snackbar/snackbar.service";
 export class NewLeaveRequestComponent {
 
   @Input() leaveRequestTypes: KeyValue<string>[];
+
+  @Input() set leaveRequestForEdit(leaveRequest: LeaveRequest | undefined) {
+    if (leaveRequest) {
+      console.log('patch')
+      this.form.patchValue({
+        dateFrom: leaveRequest.dateFrom,
+        dateTo: leaveRequest.dateTo,
+        type: leaveRequest.type
+      })
+    }
+  }
+
   @Output() cancel = new EventEmitter<void>();
   @Output() save = new EventEmitter<void>();
 

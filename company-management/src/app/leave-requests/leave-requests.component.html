@@ -29,6 +29,7 @@
 
 <div #requestList class="request-list">
   <button mat-raised-button (click)="onCreate()">Create</button>
+  <button mat-raised-button (click)="onEdit()">Edit</button>
   <button mat-raised-button [disabled]="!isLeaveRequestSelected()" (click)="onDelete()">Delete</button>
   <app-leave-request-list
     [leaveRequests]="leaveRequests$ | async">
@@ -38,6 +39,7 @@
 <div #createRequestContainer class="new-leave-request-container" style="margin-bottom: 15%">
   <div *ngIf="createMode">
     <app-new-leave-request
+      [leaveRequestForEdit]="leaveRequestListComponent?.selected"
       [leaveRequestTypes]="leaveRequestTypes$ | async"
       (cancel)="onCreationCancel()"
       (save)="onSuccessfulSave()"
