@@ -10,6 +10,7 @@ import {
   ConfirmationModalProvider
 } from "../shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service";
 import {LeaveRequestListComponent} from "./leave-request-list/leave-request-list.component";
+import {SnackbarService} from "../shared/snackbar/snackbar.service";
 
 @Component({
   selector: 'app-leave-requests',
@@ -54,6 +55,7 @@ export class LeaveRequestsComponent {
   constructor(private leaveRequestService: LeaveRequestService,
               private employeesBsService: EmployeeBsService,
               private confirmationModalProvided: ConfirmationModalProvider,
+              private snackbarService: SnackbarService,
               private router: Router) {
   }
 
@@ -86,7 +88,16 @@ export class LeaveRequestsComponent {
 
   onDelete(): void {
     this.confirmationModalProvided.open()
-      .subscribe(res => console.log(res))
+      .pipe(
+        filter(confirmation => !!confirmation),
+        switchMap(() => {
+          return this.leaveRequestService.delete(this.leaveRequestListComponent.selected?.id);
+        })
+      )
+      .subscribe(() => {
+        this.refreshLeaveRequestsSubject$.next();
+        this.snackbarService.success('Leave request was successfully deleted');
+      })
   }
 
 

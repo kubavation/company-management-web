@@ -125,8 +125,6 @@ Jcompany-management/src/app/leave-requests/leave-requests-routing.module.ts,6\f
 ncompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.html,c\e\ce5cc1b08b41a3014554b8c9128cfb9412d3be6d
 l
 <company-management/src/app/shared/employee/model/employee.ts,2\5\252d93a43b5b89c5a4292f0946e791570172849f
-z
-Jcompany-management/src/app/leave-requests/service/leave-request.service.ts,1\e\1efe8090c28f29b0297a3b18b8b59a354379b93e
 Œ
 \company-management/src/app/leave-requests/new-leave-request/new-leave-request.component.scss,e\7\e73013cc1dde1733c22b9b4d3e60e460070f1804
 ]
