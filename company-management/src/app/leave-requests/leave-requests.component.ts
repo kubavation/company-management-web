@@ -6,6 +6,10 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {BehaviorSubject, combineLatest, Subject} from "rxjs";
 import {LeaveRequestFilter} from "./model/leave-request-filter";
 import {Router} from "@angular/router";
+import {
+  ConfirmationModalProvider
+} from "../shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service";
+import {LeaveRequestListComponent} from "./leave-request-list/leave-request-list.component";
 
 @Component({
   selector: 'app-leave-requests',
@@ -16,6 +20,7 @@ export class LeaveRequestsComponent {
 
   @ViewChild('createRequestContainer') createRequestContainer: ElementRef;
   @ViewChild('requestList') requestList: ElementRef;
+  @ViewChild(LeaveRequestListComponent) leaveRequestListComponent: LeaveRequestListComponent;
 
   leaveRequestTypeControl = new FormControl('');
   advancedFiltersControls = new FormControl(false);
@@ -48,6 +53,7 @@ export class LeaveRequestsComponent {
 
   constructor(private leaveRequestService: LeaveRequestService,
               private employeesBsService: EmployeeBsService,
+              private confirmationModalProvided: ConfirmationModalProvider,
               private router: Router) {
   }
 
@@ -73,6 +79,12 @@ export class LeaveRequestsComponent {
     this.scrollIntoView(this.createRequestContainer, 'end');
   }
 
+  onDelete(): void {
+    this.confirmationModalProvided.open()
+      .subscribe(res => console.log(res))
+  }
+
+
   onCreationCancel(): void {
     this.createMode = false;
     this.scrollIntoView(this.requestList);
@@ -92,6 +104,10 @@ export class LeaveRequestsComponent {
         block: blockOption,
       });
     }, 0)
+  }
+
+  isLeaveRequestSelected(): boolean {
+    return !!this.leaveRequestListComponent?.selected;
   }
 
 }

@@ -9,8 +9,6 @@ x
 Hcompany-management/src/app/shared/base-modal/config/base-modal-config.ts,a\a\aab1ba7ec7441169be3568007733c5725fcfa583
 †
 Vcompany-management/src/app/shared/confirmation-modal/confirmation-modal.component.html,9\3\93bb3603560c0c38080472f22e9c807480cd3b1f
-„
-Tcompany-management/src/app/shared/confirmation-modal/confirmation-modal.component.ts,1\a\1a24ce1d55d8f620ebed3ceec367749d9d5fd30d
 ‡
 Wcompany-management/src/app/shared/employee/employee-modal/employee-modal.component.scss,4\0\407ad123f3290dedd2dc1aa653a2f662a1565339
 {

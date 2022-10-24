@@ -23,7 +23,7 @@ export class LeaveRequestListComponent {
 
   @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
-  selected: LeaveRequest | undefined;
+  public selected: LeaveRequest | undefined;
 
   public readonly DATA_TABLE_COLUMNS = ['type', 'dateFrom', 'dateTo', 'days'];
 
