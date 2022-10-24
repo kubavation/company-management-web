@@ -1,24 +1,24 @@
 <div class="mat-elevation-z20">
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%" matSort>
 
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
       <td mat-cell *matCellDef="let element"> {{element.type | leaveRequestTypeDesc}} </td>
     </ng-container>
 
     <ng-container matColumnDef="dateFrom">
-      <th mat-header-cell *matHeaderCellDef> Date from </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date from </th>
       <td mat-cell *matCellDef="let element"> {{element.dateFrom | date: 'yyyy-MM-dd'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="dateTo">
-      <th mat-header-cell *matHeaderCellDef> Date to </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date to </th>
       <td mat-cell *matCellDef="let element"> {{element.dateTo | date: 'yyyy-MM-dd'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="days">
-      <th mat-header-cell *matHeaderCellDef> Number of days </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Number of days </th>
       <td mat-cell *matCellDef="let element"> {{element.days}} </td>
     </ng-container>
 
