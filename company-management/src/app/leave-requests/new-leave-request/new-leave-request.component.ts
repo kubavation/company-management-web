@@ -21,13 +21,18 @@ export class NewLeaveRequestComponent {
   @Input() leaveRequestTypes: KeyValue<string>[];
 
   @Input() set leaveRequestForEdit(leaveRequest: LeaveRequest | undefined) {
+
     if (leaveRequest) {
-      console.log('patch')
-      this.form.patchValue({
-        dateFrom: leaveRequest.dateFrom,
-        dateTo: leaveRequest.dateTo,
-        type: leaveRequest.type
-      })
+
+      setTimeout(() => {
+        this.form.patchValue({
+          dateFrom: new Date(leaveRequest.dateFrom),
+          dateTo: new Date(leaveRequest.dateTo),
+          type: leaveRequest.type,
+          standInEmployee: leaveRequest.standInEmployeeId
+        })
+      });
+
     }
   }
 
@@ -41,10 +46,12 @@ export class NewLeaveRequestComponent {
     standInEmployee: [null, Validators.required]
   });
 
+
   days$ = combineLatest(
     [
-      this.form.get('dateFrom').valueChanges,
-      this.form.get('dateTo').valueChanges
+      this.dateFromControl.valueChanges,
+      this.dateToControl.valueChanges
+
     ])
     .pipe(
         switchMap(([dateFrom, dateTo]) => {
@@ -73,6 +80,7 @@ export class NewLeaveRequestComponent {
   constructor(private fb: FormBuilder,
               private employeeBsService: EmployeeBsService,
               private leaveRequestService: LeaveRequestService,
+              private cdr: ChangeDetectorRef,
               private snackbarService: SnackbarService) {
   }
 
