@@ -29,9 +29,11 @@
 
 
 <div #requestList class="request-list">
-  <button mat-raised-button [disabled]="isAddButtonDisabled()" (click)="onCreate()">Create</button>
-  <button mat-raised-button [disabled]="isEditButtonDisabled()" (click)="onEdit()">Edit</button>
-  <button mat-raised-button [disabled]="isDeleteButtonDisabled()" (click)="onDelete()">Delete</button>
+  <div class="request-list-actions">
+    <button mat-raised-button [disabled]="isAddButtonDisabled()" (click)="onCreate()">Create</button>
+    <button mat-raised-button [disabled]="isEditButtonDisabled()" (click)="onEdit()">Edit</button>
+    <button mat-raised-button [disabled]="isDeleteButtonDisabled()" (click)="onDelete()">Delete</button>
+  </div>
   <app-leave-request-list
     [leaveRequests]="leaveRequests$ | async">
   </app-leave-request-list>
