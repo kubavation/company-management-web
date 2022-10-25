@@ -29,7 +29,7 @@ export class LeaveRequestsComponent {
   leaveRequestTypeControl = new FormControl('');
   advancedFiltersControls = new FormControl(false);
 
-  private creationMode: CreationMode;
+  creationMode: CreationMode;
 
   leaveRequestTypeControlValue$ = this.leaveRequestTypeControl.valueChanges
     .pipe(
@@ -55,7 +55,6 @@ export class LeaveRequestsComponent {
       )
     );
 
-  createMode = false;
 
   constructor(private leaveRequestService: LeaveRequestService,
               private employeesBsService: EmployeeBsService,
@@ -82,13 +81,11 @@ export class LeaveRequestsComponent {
   }
 
   onCreate(): void {
-    this.createMode = true;
     this.creationMode = CreationMode.ADD;
     this.scrollIntoView(this.createRequestContainer, 'end');
   }
 
   onEdit(): void {
-    this.createMode = true;
     this.creationMode = CreationMode.EDIT;
     this.scrollIntoView(this.createRequestContainer, 'end');
   }
@@ -109,7 +106,7 @@ export class LeaveRequestsComponent {
 
 
   onCreationCancel(): void {
-    this.createMode = false;
+    this.creationMode = null;
     this.scrollIntoView(this.requestList);
   }
 
@@ -119,7 +116,7 @@ export class LeaveRequestsComponent {
       .subscribe(_ => {
         this.snackbarService.success('Request was successfully saved')
         this.refreshLeaveRequestsSubject$.next();
-        this.createMode = false;
+        this.creationMode = null;
         this.scrollIntoView(this.requestList);
       }, e => console.log(e));
   }
@@ -139,15 +136,15 @@ export class LeaveRequestsComponent {
   }
 
   isAddButtonDisabled(): boolean {
-    return this.createMode;
+    return this.isCreationModeSet;
   }
 
   isEditButtonDisabled(): boolean {
-    return !this.isLeaveRequestSelected() || this.createMode;
+    return !this.isLeaveRequestSelected() || this.isCreationModeSet;
   }
 
   isDeleteButtonDisabled(): boolean {
-    return !this.isLeaveRequestSelected() || this.createMode;
+    return !this.isLeaveRequestSelected() || this.isCreationModeSet;
   }
 
   get selectedLeaveRequest(): LeaveRequest {
@@ -157,6 +154,10 @@ export class LeaveRequestsComponent {
     }
 
     return null;
+  }
+
+  get isCreationModeSet(): boolean {
+    return this.creationMode != null;
   }
 
 }

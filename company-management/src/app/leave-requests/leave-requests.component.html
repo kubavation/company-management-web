@@ -40,7 +40,7 @@
 </div>
 
 <div #createRequestContainer class="new-leave-request-container" style="margin-bottom: 15%">
-  <div *ngIf="createMode">
+  <div *ngIf="isCreationModeSet">
     <app-new-leave-request
       [leaveRequestForEdit]="selectedLeaveRequest"
       [leaveRequestTypes]="leaveRequestTypes$ | async"
