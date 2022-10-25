@@ -42,7 +42,7 @@
 <div #createRequestContainer class="new-leave-request-container" style="margin-bottom: 15%">
   <div *ngIf="createMode">
     <app-new-leave-request
-      [leaveRequestForEdit]="leaveRequestListComponent?.selected"
+      [leaveRequestForEdit]="selectedLeaveRequest"
       [leaveRequestTypes]="leaveRequestTypes$ | async"
       (cancel)="onCreationCancel()"
       (save)="onSave($event)"

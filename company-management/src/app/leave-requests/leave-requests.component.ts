@@ -1,9 +1,9 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {LeaveRequestService} from "./service/leave-request.service";
 import {EmployeeBsService} from "../shared/employee/service/employee-bs.service";
-import {filter, startWith, switchMap, tap} from "rxjs/operators";
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {BehaviorSubject, combineLatest, Subject} from "rxjs";
+import {filter, startWith, switchMap} from "rxjs/operators";
+import {FormControl} from "@angular/forms";
+import {BehaviorSubject, combineLatest} from "rxjs";
 import {LeaveRequestFilter} from "./model/leave-request-filter";
 import {Router} from "@angular/router";
 import {
@@ -12,6 +12,8 @@ import {
 import {LeaveRequestListComponent} from "./leave-request-list/leave-request-list.component";
 import {SnackbarService} from "../shared/snackbar/snackbar.service";
 import {CreateLeaveRequest} from "./model/create-leave-request";
+import {CreationMode} from "../shared/model/creation-mode";
+import {LeaveRequest} from "./model/leave-request";
 
 @Component({
   selector: 'app-leave-requests',
@@ -26,6 +28,8 @@ export class LeaveRequestsComponent {
 
   leaveRequestTypeControl = new FormControl('');
   advancedFiltersControls = new FormControl(false);
+
+  private creationMode: CreationMode;
 
   leaveRequestTypeControlValue$ = this.leaveRequestTypeControl.valueChanges
     .pipe(
@@ -79,11 +83,13 @@ export class LeaveRequestsComponent {
 
   onCreate(): void {
     this.createMode = true;
+    this.creationMode = CreationMode.ADD;
     this.scrollIntoView(this.createRequestContainer, 'end');
   }
 
   onEdit(): void {
     this.createMode = true;
+    this.creationMode = CreationMode.EDIT;
     this.scrollIntoView(this.createRequestContainer, 'end');
   }
 
@@ -142,6 +148,15 @@ export class LeaveRequestsComponent {
 
   isDeleteButtonDisabled(): boolean {
     return !this.isLeaveRequestSelected() || this.createMode;
+  }
+
+  get selectedLeaveRequest(): LeaveRequest {
+
+    if (this.creationMode === CreationMode.EDIT) {
+      return this.leaveRequestListComponent?.selected;
+    }
+
+    return null;
   }
 
 }
