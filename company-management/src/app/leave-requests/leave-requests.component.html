@@ -27,10 +27,11 @@
 
 </form>
 
+
 <div #requestList class="request-list">
-  <button mat-raised-button (click)="onCreate()">Create</button>
-  <button mat-raised-button (click)="onEdit()">Edit</button>
-  <button mat-raised-button [disabled]="!isLeaveRequestSelected()" (click)="onDelete()">Delete</button>
+  <button mat-raised-button [disabled]="isAddButtonDisabled()" (click)="onCreate()">Create</button>
+  <button mat-raised-button [disabled]="isEditButtonDisabled()" (click)="onEdit()">Edit</button>
+  <button mat-raised-button [disabled]="isDeleteButtonDisabled()" (click)="onDelete()">Delete</button>
   <app-leave-request-list
     [leaveRequests]="leaveRequests$ | async">
   </app-leave-request-list>

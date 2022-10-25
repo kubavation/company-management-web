@@ -122,8 +122,20 @@ export class LeaveRequestsComponent {
     }, 0)
   }
 
-  isLeaveRequestSelected(): boolean {
+  private isLeaveRequestSelected(): boolean {
     return !!this.leaveRequestListComponent?.selected;
+  }
+
+  isAddButtonDisabled(): boolean {
+    return this.createMode;
+  }
+
+  isEditButtonDisabled(): boolean {
+    return !this.isLeaveRequestSelected() || this.createMode;
+  }
+
+  isDeleteButtonDisabled(): boolean {
+    return !this.isLeaveRequestSelected() || this.createMode;
   }
 
 }
