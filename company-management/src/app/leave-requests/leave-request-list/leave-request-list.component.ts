@@ -12,8 +12,9 @@ import {MatSort} from "@angular/material/sort";
 })
 export class LeaveRequestListComponent {
 
-  dataSource: MatTableDataSource<LeaveRequest>;
+
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) matPaginator: MatPaginator;
 
   @Input() set leaveRequests(requests: LeaveRequest[]) {
     this.dataSource = new MatTableDataSource<LeaveRequest>(requests);
@@ -21,13 +22,25 @@ export class LeaveRequestListComponent {
     this.dataSource.sort = this.sort;
   }
 
-  @ViewChild(MatPaginator) matPaginator: MatPaginator;
+  @Input() set selectable(isSelectable: boolean) {
+    this.isSelectable = isSelectable;
+  }
+
+  dataSource: MatTableDataSource<LeaveRequest>;
 
   public selected: LeaveRequest | undefined;
+  isSelectable = true;
 
   public readonly DATA_TABLE_COLUMNS = ['type', 'dateFrom', 'dateTo', 'days'];
 
   constructor() {
+  }
+
+
+  onRowClick(leaveRequest) {
+    if (this.isSelectable) {
+      this.selected = leaveRequest;
+    }
   }
 
 

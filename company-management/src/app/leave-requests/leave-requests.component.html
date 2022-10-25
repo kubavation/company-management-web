@@ -35,6 +35,7 @@
     <button mat-raised-button [disabled]="isDeleteButtonDisabled()" (click)="onDelete()">Delete</button>
   </div>
   <app-leave-request-list
+    [selectable]="!isCreationModeSet"
     [leaveRequests]="leaveRequests$ | async">
   </app-leave-request-list>
 </div>
