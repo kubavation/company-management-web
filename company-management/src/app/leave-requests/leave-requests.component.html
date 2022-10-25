@@ -45,7 +45,7 @@
       [leaveRequestForEdit]="leaveRequestListComponent?.selected"
       [leaveRequestTypes]="leaveRequestTypes$ | async"
       (cancel)="onCreationCancel()"
-      (save)="onSuccessfulSave()"
+      (save)="onSave($event)"
     ></app-new-leave-request>
   </div>
 </div>

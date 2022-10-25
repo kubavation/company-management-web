@@ -37,7 +37,7 @@ export class NewLeaveRequestComponent {
   }
 
   @Output() cancel = new EventEmitter<void>();
-  @Output() save = new EventEmitter<void>();
+  @Output() save = new EventEmitter<CreateLeaveRequest>();
 
   form = this.fb.group({
     type: [null, Validators.required],
@@ -93,11 +93,13 @@ export class NewLeaveRequestComponent {
       standInEmployeeId: this.standInEmployeeControl.value
     };
 
-    this.leaveRequestService.create(leaveRequest)
-      .subscribe(_ => {
-        this.snackbarService.success('Request was successfully saved')
-        this.save.next();
-      }, e => console.log(e))
+    this.save.next(leaveRequest);
+
+    // this.leaveRequestService.create(leaveRequest)
+    //   .subscribe(_ => {
+    //     this.snackbarService.success('Request was successfully saved')
+    //     this.save.next();
+    //   }, e => console.log(e))
   }
 
   onCancel(): void {

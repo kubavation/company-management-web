@@ -11,6 +11,7 @@ import {
 } from "../shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service";
 import {LeaveRequestListComponent} from "./leave-request-list/leave-request-list.component";
 import {SnackbarService} from "../shared/snackbar/snackbar.service";
+import {CreateLeaveRequest} from "./model/create-leave-request";
 
 @Component({
   selector: 'app-leave-requests',
@@ -106,10 +107,15 @@ export class LeaveRequestsComponent {
     this.scrollIntoView(this.requestList);
   }
 
-  onSuccessfulSave(): void {
-    this.refreshLeaveRequestsSubject$.next();
-    this.createMode = false;
-    this.scrollIntoView(this.requestList);
+  onSave(leaveRequest: CreateLeaveRequest): void {
+
+    this.leaveRequestService.create(leaveRequest)
+      .subscribe(_ => {
+        this.snackbarService.success('Request was successfully saved')
+        this.refreshLeaveRequestsSubject$.next();
+        this.createMode = false;
+        this.scrollIntoView(this.requestList);
+      }, e => console.log(e));
   }
 
 
