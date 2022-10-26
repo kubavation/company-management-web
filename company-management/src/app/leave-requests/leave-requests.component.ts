@@ -114,13 +114,29 @@ export class LeaveRequestsComponent {
 
   onSave(leaveRequest: CreateLeaveRequest): void {
 
-    this.leaveRequestService.create(leaveRequest)
-      .subscribe(_ => {
-        this.snackbarService.success('Request was successfully saved')
-        this.refreshLeaveRequestsSubject$.next();
-        this.creationMode = null;
-        this.scrollIntoView(this.requestList);
-      }, e => console.log(e));
+    if (this.creationMode === CreationMode.ADD) {
+
+      this.leaveRequestService.create(leaveRequest)
+        .subscribe(_ => {
+          this.onSuccessfulSave();
+        }, e => console.log(e));
+
+    } else {
+
+      this.leaveRequestService.edit(this.selectedLeaveRequest.id, leaveRequest)
+        .subscribe(_ => {
+          this.onSuccessfulSave();
+        }, e => console.log(e));
+
+    }
+
+  }
+
+  private onSuccessfulSave(): void {
+    this.snackbarService.success('Request was successfully saved')
+    this.refreshLeaveRequestsSubject$.next();
+    this.creationMode = null;
+    this.scrollIntoView(this.requestList);
   }
 
 

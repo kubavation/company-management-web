@@ -38,6 +38,10 @@ export class LeaveRequestService {
     return this.http.post<void>(`${Env.serverUrl}/leave-requests`, request);
   }
 
+  public edit(id: number, request: CreateLeaveRequest): Observable<void> {
+    return this.http.put<void>(`${Env.serverUrl}/leave-requests/${id}`, request);
+  }
+
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(`${Env.serverUrl}/leave-requests/${id}`);
   }
