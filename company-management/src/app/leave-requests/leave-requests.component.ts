@@ -126,6 +126,7 @@ export class LeaveRequestsComponent {
       this.leaveRequestService.edit(this.selectedLeaveRequest.id, leaveRequest)
         .subscribe(_ => {
           this.onSuccessfulSave();
+          this.leaveRequestListComponent.selected = null;
         }, e => console.log(e));
 
     }
