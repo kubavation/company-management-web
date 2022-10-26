@@ -60,10 +60,9 @@ export class LeaveRequestListFiltersComponent {
 
 
   search() {
-    console.log(this.filteredRequestTypes)
-     const obj: LeaveRequestFilter = {
+    const obj: LeaveRequestFilter = {
       ...this.form.value,
-      requestType: this.filteredRequestTypes.map(t => t.value)
+      requestType: this.filteredRequestTypes?.map(t => t.value)
     }
 
     this.onSearch.next(obj);

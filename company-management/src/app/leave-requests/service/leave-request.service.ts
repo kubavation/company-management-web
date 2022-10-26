@@ -8,6 +8,7 @@ import {LeaveRequest} from "../model/leave-request";
 import {LeaveRequestType} from "../model/leave-request-type";
 import {LeaveRequestFilter} from "../model/leave-request-filter";
 import {CreateLeaveRequest} from "../model/create-leave-request";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class LeaveRequestService {
   }
 
   public findByFilters(filters: LeaveRequestFilter): Observable<LeaveRequest[]> {
-    return this.http.post<LeaveRequest[]>(`${Env.serverUrl}/leave-requests`, filters)
+    return this.http.post<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/filters`, filters);
   }
 
   public findStandInEmployees(employeeId: number): Observable<Employee[]> {

@@ -47,6 +47,7 @@ export class LeaveRequestsComponent {
       this.refreshLeaveRequestsSubject$])
     .pipe(
       switchMap(([employee, requestType, filterObject, _]) => {
+
           if (filterObject) {
             return this.leaveRequestService.findByFilters(filterObject);
           }
@@ -66,6 +67,7 @@ export class LeaveRequestsComponent {
   advancedFiltersChange({checked}): void {
     this.leaveRequestTypeControl.setValue('');
     if (!checked) {
+      console.log('???')
       this.filterObjectSubject$.next(null);
     }
   }
