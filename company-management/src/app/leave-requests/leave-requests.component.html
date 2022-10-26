@@ -20,6 +20,7 @@
     <app-leave-request-list-filters
       [advancedFiltersEnabled] = "advancedFiltersControls.value"
       [enabled]="advancedFiltersControls.value"
+      [buttonsDisabled]="isCreationModeSet"
       [requestTypes]="leaveRequestTypes$ | async"
       (onSearch)="filterLeaveRequests($event)"
     ></app-leave-request-list-filters>

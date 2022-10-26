@@ -149,7 +149,5 @@ w
 Gcompany-management/src/app/leave-requests/leave-requests.component.scss,5\d\5d0f2e8f8b6f181b92ae8ed5cfc6dcf0c75ce495
 Ž
 ^company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.scss,2\b\2bfcb6f33296ccab72efdcf72e285e59cd5ceb63
-Ž
-^company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.html,3\8\38716784276fa5e3c398d13da69d2a5674650773
 w
 Gcompany-management/src/app/leave-requests/model/leave-request-filter.ts,3\4\345b7123b0e489aa6636ad9ea466a705425eaa29

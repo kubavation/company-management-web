@@ -28,6 +28,8 @@ export class LeaveRequestListFiltersComponent {
   @Input() enabled = false;
   @Input() requestTypes: KeyValue<string>[];
 
+  @Input() buttonsDisabled = false;
+
   @Input() set advancedFiltersEnabled(filtersEnabled: boolean) {
     if (!filtersEnabled) {
       this.clearFilters();

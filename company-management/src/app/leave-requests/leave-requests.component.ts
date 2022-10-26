@@ -29,7 +29,7 @@ export class LeaveRequestsComponent {
   leaveRequestTypeControl = new FormControl('');
   advancedFiltersControls = new FormControl(false);
 
-  creationMode: CreationMode;
+  creationMode: CreationMode = null;
 
   leaveRequestTypeControlValue$ = this.leaveRequestTypeControl.valueChanges
     .pipe(
