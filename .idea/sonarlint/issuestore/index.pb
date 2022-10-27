@@ -93,8 +93,6 @@ Q
 Pcompany-management/src/app/shared/loading-spinner/loading-spinner.component.html,c\8\c8692860a7bb7dcb4c4ceb41f63a69f505f381ed
 ¡
 qcompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.spec.ts,6\6\6697a9e635debee974f1d56676072195aff9670c
-[
-+company-management/src/app/app.component.ts,3\4\34d6b749e0621d6f12d2098264bc352ffacb2891
 €
 Pcompany-management/src/app/shared/loading-spinner/loading-spinner.component.scss,b\0\b0152b242bd0f8458219e089ebabce69a493a9f0
 g
@@ -109,14 +107,10 @@ t
 Dcompany-management/src/app/shared/interceptor/loading.interceptor.ts,3\a\3ad3ba605d0ecd7daf1cffe578fd0b2b6b7a408a
 ~
 Ncompany-management/src/app/shared/loading-spinner/loading-spinner.component.ts,8\a\8a132b4e64588bd3736099f4136c54c0f8513d05
-X
-(company-management/src/app/app.module.ts,d\5\d594fc436b5e1700b378f24b1e9e32c57f280969
 l
 <company-management/src/app/shared/employee/model/employee.ts,2\5\252d93a43b5b89c5a4292f0946e791570172849f
 Œ
 \company-management/src/app/leave-requests/new-leave-request/new-leave-request.component.scss,e\7\e73013cc1dde1733c22b9b4d3e60e460070f1804
-]
--company-management/src/app/app.component.html,1\1\11166c9e08cd9530c5c2162ace33ef888b243155
 w
 Gcompany-management/src/app/leave-requests/model/create-leave-request.ts,a\7\a79ee49fa4de893e9a4a4e1f069c8119fe2a7440
 u
