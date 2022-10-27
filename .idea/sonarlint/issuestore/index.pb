@@ -111,8 +111,6 @@ Dcompany-management/src/app/shared/interceptor/loading.interceptor.ts,3\a\3ad3b
 Ncompany-management/src/app/shared/loading-spinner/loading-spinner.component.ts,8\a\8a132b4e64588bd3736099f4136c54c0f8513d05
 X
 (company-management/src/app/app.module.ts,d\5\d594fc436b5e1700b378f24b1e9e32c57f280969
-`
-0company-management/src/app/app-routing.module.ts,9\8\98aad9144e00519efbfc15d825e0c8bfffdefc6a
 l
 <company-management/src/app/shared/employee/model/employee.ts,2\5\252d93a43b5b89c5a4292f0946e791570172849f
 Œ
