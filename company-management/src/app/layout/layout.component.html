@@ -1,4 +1,5 @@
-<div *ngIf="isAuthenticated">
+
+<div *ngIf="!!(isAuthenticated$ | async)">
 <mat-toolbar style="height: 10vh;">
   <button mat-icon-button class="example-icon"
           aria-label="Example icon-button with menu icon"
@@ -31,7 +32,7 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 </div>
-<div>
+<div *ngIf="!(isAuthenticated$ | async)">
   <mat-card>
     <mat-card-header></mat-card-header>
     <mat-card-content class="auth-component">
