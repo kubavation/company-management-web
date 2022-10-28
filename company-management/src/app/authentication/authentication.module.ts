@@ -12,6 +12,9 @@ import {MatInputModule} from "@angular/material/input";
   declarations: [
     LoginPageComponent
   ],
+  exports: [
+    LoginPageComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

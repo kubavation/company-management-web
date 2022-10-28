@@ -32,6 +32,8 @@ export class LayoutComponent {
       tap((employees) => this.searchEmployee(employees))
     ); //FIXME (connect with auth)
 
+  isAuthenticated = false;
+
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
