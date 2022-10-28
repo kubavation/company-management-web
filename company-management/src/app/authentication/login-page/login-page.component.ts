@@ -13,7 +13,7 @@ import {Observable} from "rxjs";
 })
 export class LoginPageComponent {
 
-  @Output() afterLogin = new EventEmitter<void>();
+  @Output() afterLogin = new EventEmitter<string>();
 
   constructor(private authService: AuthenticationService,
               private fb: FormBuilder,
@@ -28,9 +28,8 @@ export class LoginPageComponent {
   login(): void {
     const authRequest: AuthenticationRequest = {...this.form.value};
     this.authService.authenticate(authRequest)
-      .subscribe(res => {
-        console.log(res)
-        this.afterLogin.next();
+      .subscribe(token => {
+        this.afterLogin.next(token);
       },
         error => this.snackbarService.error('Incorrect username or password.'))
   }

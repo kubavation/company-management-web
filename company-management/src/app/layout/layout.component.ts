@@ -62,8 +62,8 @@ export class LayoutComponent {
   }
 
 
-  onLogin(): void {
-    this.tokenStorageService.setToken('test');
+  onLogin(token: string): void {
+    this.tokenStorageService.setToken(token);
   }
 
   logout(): void {
