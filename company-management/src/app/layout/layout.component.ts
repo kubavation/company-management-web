@@ -61,4 +61,8 @@ export class LayoutComponent {
   onLogin(): void {
     this.isAuthenticated = true;
   }
+
+  logout(): void {
+    this.isAuthenticated = false;
+  }
 }

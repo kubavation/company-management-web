@@ -11,6 +11,12 @@
   <button mat-icon-button *ngIf="employees$ | async as employees" (click)="searchEmployee(employees)" >
      <mat-icon>search</mat-icon>
   </button>
+  <span class="employee-logout-spacer"></span>
+
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
+
 </mat-toolbar>
 <mat-sidenav-container hasBackdrop="false">
   <mat-sidenav #sidenav mode="side" opened="false" disableClose="true" style="width:10vw">
