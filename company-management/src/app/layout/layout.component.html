@@ -30,7 +30,7 @@
     <mat-card-header></mat-card-header>
     <mat-card-content class="auth-component">
       <div>
-        <app-login-page></app-login-page>
+        <app-login-page (afterLogin)="onLogin()"></app-login-page>
       </div>
     </mat-card-content>
   </mat-card>

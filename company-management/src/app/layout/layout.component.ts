@@ -34,6 +34,7 @@ export class LayoutComponent {
 
   isAuthenticated = false;
 
+
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
@@ -57,4 +58,7 @@ export class LayoutComponent {
   }
 
 
+  onLogin(): void {
+    this.isAuthenticated = true;
+  }
 }

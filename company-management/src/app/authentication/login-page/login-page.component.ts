@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {AuthenticationService} from "../service/authentication.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationRequest} from "../model/authentication-request";
 import {SnackbarService} from "../../shared/snackbar/snackbar.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-login-page',
@@ -11,6 +12,8 @@ import {SnackbarService} from "../../shared/snackbar/snackbar.service";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPageComponent {
+
+  @Output() afterLogin = new EventEmitter<void>();
 
   constructor(private authService: AuthenticationService,
               private fb: FormBuilder,
@@ -22,11 +25,12 @@ export class LoginPageComponent {
   });
 
 
-  login() {
+  login(): void {
     const authRequest: AuthenticationRequest = {...this.form.value};
     this.authService.authenticate(authRequest)
       .subscribe(res => {
         console.log(res)
+        this.afterLogin.next();
       },
         error => this.snackbarService.error('Incorrect username or password.'))
   }

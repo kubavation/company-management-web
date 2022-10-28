@@ -135,8 +135,6 @@ Acompany-management/src/app/shared/interceptor/cors.interceptor.ts,1\b\1b36d596
 \company-management/src/app/leave-requests/leave-request-list/leave-request-list.component.ts,e\c\ec8fc54ed11bf64b629f25297e0cfcbb6945f25d
 ž
 ncompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.html,c\e\ce5cc1b08b41a3014554b8c9128cfb9412d3be6d
-w
-Gcompany-management/src/app/leave-requests/leave-requests.component.html,4\c\4c7da2a83cfa2308f0ab0dec382a1e45c23b85e1
 œ
 lcompany-management/src/app/leave-requests/leave-request-list-filters/leave-request-list-filters.component.ts,c\6\c6dfdc86fa9af279737858a719350ca1a6a15dff
 Ž
