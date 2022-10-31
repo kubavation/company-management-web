@@ -12,7 +12,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
 
-  public authenticate(authRequest: AuthenticationRequest): Observable<string> {
-    return this.http.post<string>(`${Env.authUrl}/authentication`, authRequest);
+  public authenticate(authRequest: AuthenticationRequest): Observable<any> {
+    return this.http.post<any>(`${Env.authUrl}/authentication`, authRequest);
   }
 }

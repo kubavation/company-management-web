@@ -8,8 +8,7 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
 
@@ -17,7 +16,8 @@ export class LoginPageComponent {
 
   constructor(private authService: AuthenticationService,
               private fb: FormBuilder,
-              private snackbarService: SnackbarService) { }
+              private snackbarService: SnackbarService) {
+  }
 
   form = this.fb.group({
     username: ['', Validators.required],
@@ -28,8 +28,8 @@ export class LoginPageComponent {
   login(): void {
     const authRequest: AuthenticationRequest = {...this.form.value};
     this.authService.authenticate(authRequest)
-      .subscribe(token => {
-        this.afterLogin.next(token);
+      .subscribe(({jwt}) => {
+        this.afterLogin.next(jwt);
       },
         error => this.snackbarService.error('Incorrect username or password.'))
   }
