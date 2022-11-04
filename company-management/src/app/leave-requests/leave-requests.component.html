@@ -1,15 +1,52 @@
-<form [formGroup]="requestTypeForm">
+<div>
   <mat-form-field appearance="outline">
-    <mat-select>
-      <mat-option *ngFor="let leaveRequestType of leaveRequestTypes$ | async" [value]="leaveRequestType.value" [formControl]="requestType">
+    <mat-label>Choose request type</mat-label>
+    <mat-select [formControl]="leaveRequestTypeControl" [disabled]="advancedFiltersControls.value">
+      <mat-option [value]="''">All</mat-option>
+      <mat-option *ngFor="let leaveRequestType of leaveRequestTypes$ | async" [value]="leaveRequestType.value">
         {{leaveRequestType.key}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-</form>
 
-<div>
+
+  <div>
+    <span>Advanced filters
+      <mat-slide-toggle
+        [formControl]="advancedFiltersControls"
+        (change)="advancedFiltersChange($event)">
+      </mat-slide-toggle>
+    </span>
+    <app-leave-request-list-filters
+      [advancedFiltersEnabled] = "advancedFiltersControls.value"
+      [enabled]="advancedFiltersControls.value"
+      [buttonsDisabled]="isCreationModeSet"
+      [requestTypes]="leaveRequestTypes$ | async"
+      (onSearch)="filterLeaveRequests($event)"
+    ></app-leave-request-list-filters>
+  </div>
+
+</div>
+
+<div #requestList class="request-list">
+  <div class="request-list-actions">
+    <button mat-raised-button [disabled]="isAddButtonDisabled()" (click)="onCreate()">Create</button>
+    <button mat-raised-button [disabled]="isEditButtonDisabled()" (click)="onEdit()">Edit</button>
+    <button mat-raised-button [disabled]="isDeleteButtonDisabled()" (click)="onDelete()">Delete</button>
+  </div>
   <app-leave-request-list
+    [selectable]="!isCreationModeSet"
     [leaveRequests]="leaveRequests$ | async">
   </app-leave-request-list>
+</div>
+
+<div #createRequestContainer class="new-leave-request-container" style="margin-bottom: 15%">
+  <div *ngIf="isCreationModeSet">
+    <app-new-leave-request
+      [leaveRequestForEdit]="selectedLeaveRequest"
+      [leaveRequestTypes]="leaveRequestTypes$ | async"
+      (cancel)="onCreationCancel()"
+      (save)="onSave($event)"
+    ></app-new-leave-request>
+  </div>
 </div>

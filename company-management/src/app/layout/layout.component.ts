@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {LayoutService} from "./service/layout.service";
 import {MatSidenav} from "@angular/material/sidenav";
-import {switchMap, tap} from "rxjs/operators";
+import {map, switchMap, tap} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {EmployeeModalComponent} from "../shared/employee/employee-modal/employee-modal.component";
 import {ModalProviderService} from "../shared/service/modal-provider.service";
@@ -9,6 +9,8 @@ import {EmployeeBsService} from "../shared/employee/service/employee-bs.service"
 import {EmployeeService} from "../shared/employee/service/employee.service";
 import {Employee} from "../shared/employee/model/employee";
 import {Route, Router} from "@angular/router";
+import {TokenStorageService} from "../authentication/service/token-storage.service";
+import {BehaviorSubject, combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-layout',
@@ -32,11 +34,16 @@ export class LayoutComponent {
       tap((employees) => this.searchEmployee(employees))
     ); //FIXME (connect with auth)
 
+
+  isAuthenticated$ = this.tokenStorageService.isTokenSet$;
+
+
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
               private router: Router,
-              public employeeBSService: EmployeeBsService) {
+              public employeeBSService: EmployeeBsService,
+              private tokenStorageService: TokenStorageService) {
     this.router.navigate(['']);
   }
 
@@ -55,4 +62,11 @@ export class LayoutComponent {
   }
 
 
+  onLogin(token: string): void {
+    this.tokenStorageService.setToken(token);
+  }
+
+  logout(): void {
+    this.tokenStorageService.removeToken();
+  }
 }

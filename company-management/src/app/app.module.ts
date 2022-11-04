@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {OrganisationService} from "./administration/administration/organisation/service/organisation.service";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
@@ -20,6 +20,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { ConfirmationModalProvider } from './shared/confirmation-modal/confirmation-modal-provider/confirmation-modal-provider.service';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import {LoadingInterceptor} from "./shared/interceptor/loading.interceptor";
+import {SharedModule} from "./shared/shared.module";
+import {CorsInterceptor} from "./shared/interceptor/cors.interceptor";
+import {AuthenticationInterceptor} from "./authentication/interceptor/authentication.interceptor";
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
     MatListModule,
     MatDialogModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SharedModule
   ],
   entryComponents: [
     ConfirmationModalComponent
@@ -56,8 +61,22 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
         horizontalPosition: "right",
         verticalPosition: "top",
       }
-    }
-
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-header>
+     New leave request
+  </mat-card-header>
+  <mat-card-content>
+
+    <form [formGroup]="form">
+
+      <div style="margin-left: 5%;margin-top: 5%;">
+          <mat-form-field appearance="outline" style="width: 30%">
+          <mat-label>Choose request type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let leaveRequestType of leaveRequestTypes" [value]="leaveRequestType.value">
+              {{leaveRequestType.key}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div style="margin-left: 5%;margin-top: 5%;">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="date-From" placeholder="Start date">
+              <input matEndDate formControlName="dateTo" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <span style="margin-left: 2%">
+            <mat-form-field  appearance="fill">
+              <mat-label>Number of days</mat-label>
+              <input matInput disabled [value]="days$ | async" />
+            </mat-form-field>
+          </span>
+      </div>
+
+      <div style="margin-left: 5%;margin-top: 5%;">
+        <mat-form-field appearance="outline" style="width: 30%">
+          <mat-label>Choose stand-in employee</mat-label>
+          <mat-select  formControlName="standInEmployee">
+            <mat-option *ngFor="let employee of standInEmployees$ | async" [value]="employee.id">
+              {{employee.lastName + ' ' + employee.firstName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="new-leave-request-buttons">
+        <button mat-raised-button (click)="onCancel()">Cancel</button>
+        <button mat-raised-button (click)="onSave()">Save</button>
+      </div>
+    </form>
+  </mat-card-content>
+
+
+</mat-card>

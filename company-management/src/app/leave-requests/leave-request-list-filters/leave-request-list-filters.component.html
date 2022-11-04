@@ -1,0 +1,54 @@
+<div *ngIf="enabled" class="leave-request-filters-container">
+
+  <div [formGroup]="form">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="dateFrom" placeholder="From">
+          <input matEndDate formControlName="dateTo" placeholder="To">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="leave-request-type-chips">
+        <mat-label>Request types</mat-label>
+        <mat-chip-list #chipList aria-label="Request type selection">
+          <mat-chip
+            *ngFor="let type of filteredRequestTypes"
+            (removed)="remove(type)">
+            {{type.key}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            #requestTypeInput
+            [disabled]="allRequestTypesChosen()"
+            [placeholder]="allRequestTypesChosen() ? '' : 'Add request type...'"
+            formControlName="requestType"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let requestType of filteredTypes$ | async" [value]="requestType">
+            {{requestType.key}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+      <div>
+    </div>
+
+    <div>
+       <button mat-raised-button [disabled]="buttonsDisabled" (click)="search()">Search</button>
+       <button mat-raised-button [disabled]="buttonsDisabled" (click)="clearFilters()">Clear filters</button>
+    </div>
+  </div>
+</div>

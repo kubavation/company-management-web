@@ -14,9 +14,17 @@ import {AbstractBaseModalComponent} from "./abstract-base-modal/abstract-base-mo
 import { SnackbarComponent } from './snackbar/snackbar/snackbar.component';
 import {SnackbarService} from "./snackbar/snackbar.service";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatOptionModule} from "@angular/material/core";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -29,6 +37,7 @@ import {MatSelectModule} from "@angular/material/select";
     EmployeeComponent,
     EmployeeModalComponent,
     SnackbarComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +50,14 @@ import {MatSelectModule} from "@angular/material/select";
     MatOptionModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   exports: [
     MatSidenavModule,
@@ -51,7 +68,16 @@ import {MatSelectModule} from "@angular/material/select";
     MatSnackBarModule,
     MatOptionModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    LoadingSpinnerComponent,
+    MatPaginatorModule
   ],
   entryComponents: [
     EmployeeModalComponent

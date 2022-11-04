@@ -13,6 +13,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { NavItemComponent } from './nav-item/nav-item.component';
 import {SharedModule} from "../shared/shared.module";
+import {AuthenticationModule} from "../authentication/authentication.module";
+import {MatCardModule} from "@angular/material/card";
 
 
 
@@ -34,7 +36,9 @@ import {SharedModule} from "../shared/shared.module";
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    SharedModule
+    SharedModule,
+    AuthenticationModule,
+    MatCardModule
   ]
 })
 export class LayoutModule { }
