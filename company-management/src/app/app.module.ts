@@ -23,7 +23,6 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {LoadingInterceptor} from "./shared/interceptor/loading.interceptor";
 import {SharedModule} from "./shared/shared.module";
 import {CorsInterceptor} from "./shared/interceptor/cors.interceptor";
-import {AuthenticationInterceptor} from "./authentication/interceptor/authentication.interceptor";
 
 @NgModule({
   declarations: [
@@ -71,12 +70,7 @@ import {AuthenticationInterceptor} from "./authentication/interceptor/authentica
       provide: HTTP_INTERCEPTORS,
       useClass: CorsInterceptor,
       multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthenticationInterceptor,
-      multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

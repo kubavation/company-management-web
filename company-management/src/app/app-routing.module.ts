@@ -11,10 +11,6 @@ const routes: Routes = [
     loadChildren: () => import('./leave-requests/leave-requests.module').then(m => m.LeaveRequestsModule)
   },
   {
-    path: 'authentication',
-    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
-  },
-  {
     path: '**', redirectTo: ''
   }
 ];

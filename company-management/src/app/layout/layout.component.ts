@@ -9,8 +9,6 @@ import {EmployeeBsService} from "../shared/employee/service/employee-bs.service"
 import {EmployeeService} from "../shared/employee/service/employee.service";
 import {Employee} from "../shared/employee/model/employee";
 import {Route, Router} from "@angular/router";
-import {TokenStorageService} from "../authentication/service/token-storage.service";
-import {BehaviorSubject, combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-layout',
@@ -35,15 +33,13 @@ export class LayoutComponent {
     ); //FIXME (connect with auth)
 
 
-  isAuthenticated$ = this.tokenStorageService.isTokenSet$;
 
 
   constructor(private layoutService: LayoutService,
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
               private router: Router,
-              public employeeBSService: EmployeeBsService,
-              private tokenStorageService: TokenStorageService) {
+              public employeeBSService: EmployeeBsService) {
     this.router.navigate(['']);
   }
 
@@ -61,12 +57,4 @@ export class LayoutComponent {
     })
   }
 
-
-  onLogin(token: string): void {
-    this.tokenStorageService.setToken(token);
-  }
-
-  logout(): void {
-    this.tokenStorageService.removeToken();
-  }
 }
