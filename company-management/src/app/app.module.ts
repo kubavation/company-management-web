@@ -24,7 +24,7 @@ import {LoadingInterceptor} from "./shared/interceptor/loading.interceptor";
 import {SharedModule} from "./shared/shared.module";
 import {CorsInterceptor} from "./shared/interceptor/cors.interceptor";
 import {initializeKeycloak} from "./keycloak/init/keycloak-init.factory";
-import {KeycloakService} from "keycloak-angular";
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import {KeycloakService} from "keycloak-angular";
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
-    SharedModule
+    SharedModule,
+    KeycloakAngularModule
   ],
   entryComponents: [
     ConfirmationModalComponent
