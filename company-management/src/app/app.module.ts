@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,8 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {LoadingInterceptor} from "./shared/interceptor/loading.interceptor";
 import {SharedModule} from "./shared/shared.module";
 import {CorsInterceptor} from "./shared/interceptor/cors.interceptor";
+import {initializeKeycloak} from "./keycloak/init/keycloak-init.factory";
+import {KeycloakService} from "keycloak-angular";
 
 @NgModule({
   declarations: [
@@ -70,6 +72,12 @@ import {CorsInterceptor} from "./shared/interceptor/cors.interceptor";
       provide: HTTP_INTERCEPTORS,
       useClass: CorsInterceptor,
       multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
     }
   ],
   bootstrap: [AppComponent]

@@ -28,8 +28,8 @@ export class NewLeaveRequestComponent {
         this.form.patchValue({
           dateFrom: new Date(leaveRequest.dateFrom),
           dateTo: new Date(leaveRequest.dateTo),
-          type: leaveRequest.type,
-          standInEmployee: leaveRequest.standInEmployeeId
+          // type: leaveRequest.type,
+          // standInEmployee: leaveRequest.standInEmployeeId //TODO
         })
       });
 
@@ -87,13 +87,15 @@ export class NewLeaveRequestComponent {
 
   onSave(): void {
 
-    const leaveRequest: CreateLeaveRequest = {
-      ...this.form.value,
-      employeeId: this.employeeBsService.getValue().id,
-      standInEmployeeId: this.standInEmployeeControl.value
-    };
+    //TODO
+    // const leaveRequest: CreateLeaveRequest = {
+    //   ...this.form.value,
+    //   employeeId: this.employeeBsService.getValue().id,
+    //   standInEmployeeId: this.standInEmployeeControl.value
+    // };
+    //this.save.next(leaveRequest);
 
-    this.save.next(leaveRequest);
+    //--END TODO
 
     // this.leaveRequestService.create(leaveRequest)
     //   .subscribe(_ => {

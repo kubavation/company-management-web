@@ -62,12 +62,13 @@ export class LeaveRequestListFiltersComponent {
 
 
   search() {
-    const obj: LeaveRequestFilter = {
-      ...this.form.value,
-      requestType: this.filteredRequestTypes?.map(t => t.value)
-    }
-
-    this.onSearch.next(obj);
+    //TODO
+    // const obj: LeaveRequestFilter = {
+    //   ...this.form.value,
+    //   requestType: this.filteredRequestTypes?.map(t => t.value)
+    // }
+    //
+    // this.onSearch.next(obj);
   }
 
   clearFilters() {

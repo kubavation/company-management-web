@@ -33,7 +33,7 @@ export class OrganisationTableComponent {
   }
 
   fetchOrganisations() {
-    this.fetchChildrenEvent.next();
+    this.fetchChildrenEvent.next(null);
   }
 
   getOrganisationPathStr() {

@@ -21,7 +21,7 @@ export class LeaveRequestService {
     return this.http.get<KeyValue<string>[]>(`${Env.serverUrl}/leave-privileges/types`)
   }
 
-  public findByEmployeeIdAndRequestType(employeeId: number, requestType: LeaveRequestType): Observable<LeaveRequest[]> {
+  public findByEmployeeIdAndRequestType(employeeId: number, requestType: string): Observable<LeaveRequest[]> {
     const httpParams = new HttpParams().append("type", requestType)
     return this.http.get<LeaveRequest[]>(`${Env.serverUrl}/leave-requests/employees/${employeeId}`, requestType ? {params: httpParams} : {})
   }
