@@ -9,6 +9,7 @@ import {EmployeeBsService} from "../shared/employee/service/employee-bs.service"
 import {EmployeeService} from "../shared/employee/service/employee.service";
 import {Employee} from "../shared/employee/model/employee";
 import {Route, Router} from "@angular/router";
+import {AuthService} from "../keycloak/service/auth.service";
 
 @Component({
   selector: 'app-layout',
@@ -39,7 +40,8 @@ export class LayoutComponent {
               private modalProviderService: ModalProviderService,
               private employeeService: EmployeeService,
               private router: Router,
-              public employeeBSService: EmployeeBsService) {
+              public employeeBSService: EmployeeBsService,
+              private authService: AuthService) {
     this.router.navigate(['']);
   }
 
@@ -57,4 +59,7 @@ export class LayoutComponent {
     })
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
 }
